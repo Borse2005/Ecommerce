@@ -48,29 +48,35 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                @forelse ($category as $categories)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class="ml-0">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    1
+                                                    {{ $key++ }}
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
+                                        <div class="text-sm text-gray-900">{{ $categories->category }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Subcategory</a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Edit</a>
                                         </span>
                                         <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Delete</a>
                                     </td>
                                 </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">{{ __("Category not Found!") }}</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

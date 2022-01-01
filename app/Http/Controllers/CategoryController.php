@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.dashboard');
+        $category = Category::get();
+        $key = 1;
+        return view('category.dashboard', compact('category', 'key'));
     }
 
     /**

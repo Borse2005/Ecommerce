@@ -14,7 +14,7 @@ class AddRoleFiledsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('role_id')->nullable('role_id')->constrained('roles');
+            $table->foreignId('role_id')->default(1)->constrained('roles');
         });
     }
 
