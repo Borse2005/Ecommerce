@@ -19,7 +19,7 @@
                         {{ __('Product') }}
                     </x-jet-nav-link><x-jet-nav-link href="" :active="request()->routeIs('')">
                         {{ __('Order') }}
-                    </x-jet-nav-link><x-jet-nav-link href="" :active="request()->routeIs('')">
+                    </x-jet-nav-link><x-jet-nav-link href="{{ route('category.index') }}" :active="request()->routeIs('category.index')">
                         {{ __('Category') }}
                     </x-jet-nav-link>
                 </div>
