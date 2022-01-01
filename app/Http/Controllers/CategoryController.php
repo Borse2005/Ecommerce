@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.update', ['category' => $category]);
     }
 
     /**
@@ -75,9 +75,14 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(RequestsCategory $request, Category $category)
     {
-        //
+        $validation = $request->validated();
+        $category->fill($validation);
+        $category->save();
+        
+        session()->flash('category', 'Category has been Updated!');
+        return redirect()->route('category.index');
     }
 
     /**

@@ -67,7 +67,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Edit</a>
+                                            <a href="{{ route('category.edit',$categories->id) }}" class="text-indigo-600 hover:text-indigo-900 ">{{ __("Edit") }}</a>
                                         </span>
                                         <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Delete</a>
                                     </td>
