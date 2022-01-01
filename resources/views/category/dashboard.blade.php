@@ -15,7 +15,7 @@
             <div class="flex flex-col">
 
                 @if (session('category') )
-                    <div class="mb-10 time">
+                    <div class="mb-6 time">
                         <div class=" max-w-sm mx-auto  rounded-lg shadow-lg flex items-center space-x-4 "
                             style="background-color: #5bc0de; padding: 10px">
                             <div class="mx-auto">
@@ -31,15 +31,15 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-left text-xs font-bolder  uppercase tracking-wider">
                                         ID
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-left text-xs font-bolder  uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-6 py-3 text-left text-xs  font-bolder relative  uppercase tracking-wider">
                                         Root
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
@@ -74,7 +74,7 @@
                                 </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="text-center">{{ __("Category not Found!") }}</td>
+                                        <td colspan="5" class="text-center p-2 font-bold">{{ __("Category not Found!") }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>
