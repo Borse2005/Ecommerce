@@ -12,4 +12,17 @@ class Category extends Model
     protected $fillable = [
         'category'
     ];
+
+    public function subcategory(){
+        return $this->hasMany(Subcategory::class);
+    }
+
+    public static function boot(){
+
+        parent::boot();
+
+        static::deleting(function(Category $category){
+            $category->subcategory()->delete();
+        });
+    }
 }
