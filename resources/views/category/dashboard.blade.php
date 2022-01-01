@@ -1,13 +1,30 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold  text-gray-800 leading-tight">
             {{ __('Category') }}
         </h2>
     </x-slot>
+    <x-slot name="anchor">
+        <h6 class="font-semibold  text-gray-800 leading-tight">
+            <a href="{{ route('category.create') }}">{{ __('Create Category') }}</a>
+        </h6>
+    </x-slot>
 
     <div class="py-12">
-        <div class="max-w-8xl mx-auto  sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto  sm:px-6 lg:px-8">
             <div class="flex flex-col">
+
+                @if (session('category') )
+                    <div class="mb-10 time">
+                        <div class=" max-w-sm mx-auto  rounded-lg shadow-lg flex items-center space-x-4 "
+                            style="background-color: #5bc0de; padding: 10px">
+                            <div class="mx-auto">
+                                <div class="text-center font-bold">{{ session('category') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <table class="min-w-full divide-y divide-gray-200 mx-auto">
@@ -26,7 +43,7 @@
                                         Root
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
-                                        <span class="sr-only">Action</span>
+                                        Action
                                     </th>
                                 </tr>
                             </thead>
@@ -47,7 +64,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Subcategory</a>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900 ">Edit</a>
                                         </span>
