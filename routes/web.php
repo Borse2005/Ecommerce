@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class)->only(['store', 'edit', 'update', 'destroy', 'show']);
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
+    Route::resource('/user', UserController::class);
 });
 
 
