@@ -77,7 +77,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="5" class="text-center p-2 font-bold">
-                                            {{ __('Category not Found!') }}</td>
+                                            {{ __('Subcategory not Found!') }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

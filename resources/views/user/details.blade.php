@@ -38,7 +38,7 @@
                             Cantact
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            +91 12345 67890
+                            +91 {{ $user->phone }}
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -46,7 +46,11 @@
                             Alternate contact
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            +91 1234 567890
+                            @if ($user->alternatephone == null)
+                                {{ __("Empty") }}
+                            @else
+                                +91 {{ $user->alternatephone }}
+                            @endif
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -54,7 +58,11 @@
                             Address
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            A/P. Morewadi, Khamkheda, Deola.
+                            @if ($user->address == null)
+                                {{ __("Empty") }}
+                            @else
+                                A/P. {{ $user->address }}
+                            @endif
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -62,7 +70,11 @@
                             District
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            Nashik
+                            @if ($user->district == null)
+                                {{ __("Empty") }}
+                            @else
+                                Dist. {{ $user->district }}
+                            @endif
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -70,7 +82,11 @@
                             State
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            Maharashtra
+                            @if ($user->state == null)
+                                {{ __("Empty") }}
+                            @else
+                                Dist. {{ $user->state }}
+                            @endif
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -78,7 +94,11 @@
                             Pincode
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            423301
+                            @if ($user->pincode == null)
+                            {{ __("Empty") }}
+                        @else
+                            Dist. {{ $user->pincode }}
+                        @endif
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -86,7 +106,11 @@
                             Total Order
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            4
+                            @if ($user->order == null)
+                                {{ __("No Order") }}
+                            @else
+                                Dist. {{ $user->order }}
+                            @endif
                         </dd>
                     </div>
                 </dl>

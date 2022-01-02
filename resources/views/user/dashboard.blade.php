@@ -66,7 +66,7 @@
                                                 <div class="text-sm text-gray-900">{{ $users->email }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                                <div class="text-sm text-gray-900">+91 12345 67890</div>
+                                                <div class="text-sm text-gray-900">+91 {{ $users->phone }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                                 <span class=" py-2 px-4 rounded">

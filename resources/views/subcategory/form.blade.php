@@ -1,6 +1,6 @@
 <div class="shadow overflow-hidden sm:rounded-md">
     <div class="px-4 py-5 bg-white sm:p-6">
-        <div class="grid grid-cols-9 gap-6">
+        <div class="grid grid-cols-5 gap-6">
             <div class="col-span-6 sm:col-span-3">
                 <label for="subcategory" class="block text-sm font-medium text-gray-700">Subcategory</label>
                 <input type="text" name="subcategory" id="subcategory" autocomplete="given-name" value="{{ old('subcategory', optional($subcategory ?? null)->subcategory) }}"

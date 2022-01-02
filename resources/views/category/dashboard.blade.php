@@ -33,11 +33,11 @@
                                         ID
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-bolder  uppercase tracking-wider">
+                                        class="px-6 py-3 text-left text-xs text-center font-bolder  uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs  font-bolder relative  uppercase tracking-wider">
+                                        class="px-6 py-3 text-left text-xs text-center  font-bolder relative  uppercase tracking-wider">
                                         Root
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
@@ -58,10 +58,10 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ $categories->category }}</div>
+                                            <div class="text-sm text-center text-gray-900">{{ $categories->category }}</div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            <a href="{{ route('subcategory.show', $categories->id) }}" class="text-indigo-600 hover:text-indigo-900 ">Subcategory</a>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                            <a href="{{ route('subcategory.show', $categories->id) }}" class="text-indigo-600 hover:text-indigo-900 text-center">{{ __("Subcategory") }}</a>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                             <span class=" py-2 px-4 rounded">

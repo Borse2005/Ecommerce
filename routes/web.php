@@ -25,9 +25,12 @@ Route::get('/dashboard', function(){
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
+    Route::get('/subcategory/show/{subcategory}',[SubcategoryController::class, 'show'])->name('subcategory.show');
     Route::resource('/category', CategoryController::class);
-    Route::resource('/subcategory', SubcategoryController::class)->only(['store', 'edit', 'update', 'destroy', 'show']);
+    Route::put('/subcategory/{subcategory}',[SubcategoryController::class, 'update'])->name('subcategory.update');
+    Route::get('/subcategory/{subcategory}',[SubcategoryController::class, 'edit'])->name('subcategory.edit');
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
+    Route::delete('/subcategory/destroy/{subcategory}',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
     Route::resource('/user', UserController::class);
 });
 
