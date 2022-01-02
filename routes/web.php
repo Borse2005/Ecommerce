@@ -26,6 +26,7 @@ Route::get('/dashboard', function(){
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::get('/subcategory/show/{subcategory}',[SubcategoryController::class, 'show'])->name('subcategory.show');
+    Route::post('/subcategory/store/',[SubcategoryController::class, 'store'])->name('subcategory.store');
     Route::resource('/category', CategoryController::class);
     Route::put('/subcategory/{subcategory}',[SubcategoryController::class, 'update'])->name('subcategory.update');
     Route::get('/subcategory/{subcategory}',[SubcategoryController::class, 'edit'])->name('subcategory.edit');
