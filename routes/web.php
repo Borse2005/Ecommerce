@@ -19,10 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function(){
+    return view('dashboard');
+})->name('dashboard');
+
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    })->name('dashboard');
     Route::resource('/category', CategoryController::class);
     Route::resource('/subcategory', SubcategoryController::class)->only(['store', 'edit', 'update', 'destroy', 'show']);
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
