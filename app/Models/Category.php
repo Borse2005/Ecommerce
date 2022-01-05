@@ -17,6 +17,10 @@ class Category extends Model
         return $this->hasMany(Subcategory::class);
     }
 
+    public function product(){
+        return $this->hasOne(Product::class);
+    }
+
     public static function boot(){
 
         parent::boot();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
     Route::delete('/subcategory/destroy/{subcategory}',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
     Route::resource('/user', UserController::class);
+    Route::resource('/product', ProductController::class);
 });
 
 
