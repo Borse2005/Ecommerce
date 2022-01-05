@@ -67,11 +67,11 @@
                                         <span class=" py-2 px-4 rounded">
                                             <a href="{{ route('product.edit',$products->id) }}" class="text-indigo-600 hover:text-indigo-900 ">{{ __('Edit') }}</a>
                                         </span>
-                                        <a class="text-indigo-600 hover:text-indigo-900 px-4" href="" onclick="  event.preventDefault();
+                                        <a class="text-indigo-600 hover:text-indigo-900 px-4" href="{{ route('product.destroy',$products->id) }}" onclick="  event.preventDefault();
                                                      document.getElementById('logout-form').submit(); ">
                                             {{ __('Delete') }}
                                         </a>
-                                        <form id="logout-form" action="" method="POST" class="d-none"
+                                        <form id="logout-form" action="{{ route('product.destroy',$products->id) }}" method="POST" class="d-none"
                                             onclick="">
                                             @csrf
                                             @method("DELETE")

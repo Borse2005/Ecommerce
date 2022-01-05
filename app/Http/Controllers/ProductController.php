@@ -92,6 +92,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        session()->flash('product', 'Product has been Deleted!');
+        return redirect()->route('product.index');
     }
 }
