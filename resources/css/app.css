@@ -2,3 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.p-9{
+    padding-left: 50px;
+    padding-right: 50px;
+}
