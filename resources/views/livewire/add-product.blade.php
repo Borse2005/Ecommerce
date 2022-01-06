@@ -1,6 +1,6 @@
 <div>
     <div class="mt-5">
-        <div class="grid grid-cols-5 gap-6">
+        <div class="grid grid-cols-0 gap-6">
             <div class="col-span-6 sm:col-span-3">
                 <label for="category_id" class="block text-sm font-medium text-gray-700">Select Category</label>
                 <select name="category_id" id="category_id" wire:model="selectedCountry"
@@ -20,7 +20,7 @@
     </div>
     @if (!is_null($selectedCountry))
         <div class="mt-5">
-            <div class="grid grid-cols-5 gap-6">
+            <div class="grid grid-cols-0 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                     <label for="subcategory_id" class="block text-sm font-medium text-gray-700">Select Category</label>
                     <select name="subcategory_id" id="subcategory_id" wire:model="selectedSubcategory"

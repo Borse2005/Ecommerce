@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
@@ -21,9 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function(){
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function(){
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::resource('/dashboard', DashboardController::class);
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::get('/subcategory/show/{subcategory}',[SubcategoryController::class, 'show'])->name('subcategory.show');
