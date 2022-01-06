@@ -38,7 +38,7 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs text-center  font-bolder relative  uppercase tracking-wider">
-                                        Root
+                                        Category
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         Action
@@ -52,7 +52,7 @@
                                         <div class="flex items-center">
                                             <div class="ml-0">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    1
+                                                    {{ $key++ }}
                                                 </div>
                                             </div>
                                         </div>
@@ -61,12 +61,13 @@
                                         <div class="text-sm text-center text-gray-900">{{ $products->product }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                                        <a href="" class="text-indigo-600 hover:text-indigo-900 text-center">{{ __('Subcategory') }}</a>
+                                        <a href="" class="text-indigo-600 hover:text-indigo-900 text-center">{{ $products->category->category }}</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">
-                                            <a href="{{ route('product.edit',$products->id) }}" class="text-indigo-600 hover:text-indigo-900 ">{{ __('Edit') }}</a>
+                                            <a href="{{ route('product.show',$products->id) }}" class="text-indigo-600 hover:text-indigo-900 ">{{ __('Details') }}</a>
                                         </span>
+                                        <a href="{{ route('product.edit',$products->id) }}" class="text-indigo-600 hover:text-indigo-900 px-4">{{ __('Edit') }}</a>
                                         <a class="text-indigo-600 hover:text-indigo-900 px-4" href="{{ route('product.destroy',$products->id) }}" onclick="  event.preventDefault();
                                                      document.getElementById('logout-form').submit(); ">
                                             {{ __('Delete') }}
@@ -79,7 +80,9 @@
                                     </td>
                                 </tr>
                                 @empty
-                                    
+                                    <tr>
+                                        <td class="font-bold text-center p-2" colspan="4">Product Not found!</td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>

@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
     Route::delete('/subcategory/destroy/{subcategory}',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
     Route::resource('/user', UserController::class);
-    Route::resource('/product', ProductController::class)->except('show');
+    Route::resource('/product', ProductController::class);
 });
 
 

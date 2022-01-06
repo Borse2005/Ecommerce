@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Product as RequestsProduct;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,8 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
-        return view('product.dashboard', compact('product'));
+        $product = Product::with('category')->get();
+        $key = 1;
+        return view('product.dashboard', compact('product', 'key'));
     }
 
     /**
@@ -37,8 +40,22 @@ class ProductController extends Controller
      */
     public function store(RequestsProduct $request)
     {
+        if($request->hasFile('thumbnail')){
+            $path = $request->file('thumbnail')->store('Thubnail');
+        }
+        
         $validation = $request->validated();
-        Product::create($validation);
+        $validation['thumbnail'] = $path;
+        // $validation['image'] = json_encode($data);
+        $product = Product::create($validation);
+
+        if ($request->hasFile('image')) {
+            foreach ($request->File('image') as $file) {
+                $name = $file->store('image');
+                $images[]=$name;
+                Image::insert( ['image'=> $name, 'product_id' => $product->id]);
+            }
+        }
 
         session()->flash('product', 'Product has been added!');
         return redirect()->route('product.index');
@@ -52,7 +69,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $products = Product::with('category', 'subcategory', 'image')->findOrFail($product->id);
+        return view('product.details', compact('products'));
     }
 
     /**
@@ -76,6 +94,13 @@ class ProductController extends Controller
      */
     public function update(RequestsProduct $request, Product $product)
     {
+        if ($request->hasFile('thumbnail')) {
+            $path = $request->file('thumbnail')->store('Thubnail');
+            if ($product->thumbnail) {
+                Storage::delete($product->thumbnail);
+            }
+        }
+
         $validation = $request->validated();
         $product->fill($validation);
         $product->save();
@@ -92,6 +117,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->thumbnail) {
+            Storage::delete($product->thumbnail);
+        }
+        
         $product->delete();
 
         session()->flash('product', 'Product has been Deleted!');
