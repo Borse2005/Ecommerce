@@ -21,6 +21,8 @@
         "tailwindcss": "^3.0.0"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.0",
+        "@tailwindcss/line-clamp": "^0.3.0",
         "latest-version": "^6.0.0"
     }
 }

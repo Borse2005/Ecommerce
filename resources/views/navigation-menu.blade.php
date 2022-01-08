@@ -16,6 +16,9 @@
                         <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                             {{ __('Dashboard') }}
                         </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('products') }}" :active="request()->routeIs('products')">
+                            {{ __('Product') }}
+                        </x-jet-nav-link>
                     @else
                         @if (Auth::user()->role_id == 2)
                         <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
@@ -195,6 +198,8 @@
             <x-jet-responsive-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            
+            
         </div>
 
         <!-- Responsive Settings Options -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class DashboardController extends Controller
         $category = Category::all();
         $product = Product::all();
         $user = User::all();
-        return view('dashboard', compact('category', 'product', 'user'));
+        $session = Session::all();
+        return view('dashboard', compact('category', 'product', 'user', 'session'));
     }
 
     /**
