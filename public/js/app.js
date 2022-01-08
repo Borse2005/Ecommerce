@@ -5451,26 +5451,26 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
-$("document").ready(function () {
+jQuery("document").ready(function () {
   setTimeout(function () {
-    $(".time").remove();
+    jQuery(".time").remove();
   }, 5000); // 5 secs
 });
-$('[data-type="adhaar-number"]').keyup(function () {
-  var value = $(this).val();
+jQuery('[data-type="adhaar-number"]').keyup(function () {
+  var value = jQuery(this).val();
   value = value.replace(/\D/g, "").split(/(?:([\d]{5}))/g).filter(function (s) {
     return s.length > 0;
   }).join(" ");
-  $(this).val(value);
+  jQuery(this).val(value);
 });
-$('[data-type="adhaar-number"]').on("change, blur", function () {
-  var value = $(this).val();
-  var maxLength = $(this).attr("maxLength");
+jQuery('[data-type="adhaar-number"]').on("change, blur", function () {
+  var value = jQuery(this).val();
+  var maxLength = jQuery(this).attr("maxLength");
 
   if (value.length != maxLength) {
-    $(this).addClass("highlight-error");
+    jQuery(this).addClass("highlight-error");
   } else {
-    $(this).removeClass("highlight-error");
+    jQuery(this).removeClass("highlight-error");
   }
 });
 
