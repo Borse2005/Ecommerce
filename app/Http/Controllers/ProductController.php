@@ -48,12 +48,12 @@ class ProductController extends Controller
         $validation['thumbnail'] = $path;
         // $validation['image'] = json_encode($data);
         $product = Product::create($validation);
-
+        
         if ($request->hasFile('image')) {
             foreach ($request->File('image') as $file) {
                 $name = $file->store('image');
                 $images[]=$name;
-                Image::insert( ['image'=> $name, 'product_id' => $product->id]);
+                Image::insert( ['image'=> $name, 'product_id' => $product->id, 'category_id' => $product->category_id, 'subcategory_id' => $product->subcategory_id]);
             }
         }
 

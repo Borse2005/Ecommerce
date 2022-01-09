@@ -17,6 +17,8 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('image');
             $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('subcategory_id')->constrained('subcategories');
             $table->timestamps();
         });
     }
