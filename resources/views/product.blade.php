@@ -1,53 +1,13 @@
 <x-app-layout>
 
-    <!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
     <div class="bg-white">
         <div>
-            <!--
-        Mobile filter dialog
-  
-        Off-canvas filters for mobile, show/hide based on off-canvas filters state.
-      -->
             <div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
-                <!--
-          Off-canvas menu overlay, show/hide based on off-canvas menu state.
-  
-          Entering: "transition-opacity ease-linear duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "transition-opacity ease-linear duration-300"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
+
                 <div class="fixed hidden inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
 
-                <!--
-          Off-canvas menu, show/hide based on off-canvas menu state.
-  
-          Entering: "transition ease-in-out duration-300 transform"
-            From: "translate-x-full"
-            To: "translate-x-0"
-          Leaving: "transition ease-in-out duration-300 transform"
-            From: "translate-x-0"
-            To: "translate-x-full"
-        -->
-                <div
-                    class="ml-auto hidden relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto" id="heroIcon">
+                <div class="ml-auto hidden relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto"
+                    id="heroIcon">
                     <div class="px-4 flex items-center justify-between">
                         <h2 class="text-lg font-medium text-gray-900">Filters</h2>
                         <button type="button"
@@ -107,22 +67,14 @@
                                         Color
                                     </span>
                                     <span class="ml-6 flex items-center">
-                                        <!--
-                      Expand icon, show/hide based on section open state.
-  
-                      Heroicon name: solid/plus-sm
-                    -->
+
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd"
                                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                        <!--
-                      Collapse icon, show/hide based on section open state.
-  
-                      Heroicon name: solid/minus-sm
-                    -->
+
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd"
@@ -197,22 +149,14 @@
                                         Category
                                     </span>
                                     <span class="ml-6 flex items-center">
-                                        <!--
-                      Expand icon, show/hide based on section open state.
-  
-                      Heroicon name: solid/plus-sm
-                    -->
+
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd"
                                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                        <!--
-                      Collapse icon, show/hide based on section open state.
-  
-                      Heroicon name: solid/minus-sm
-                    -->
+
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd"
@@ -283,22 +227,14 @@
                                         Size
                                     </span>
                                     <span class="ml-6 flex items-center">
-                                        <!--
-                      Expand icon, show/hide based on section open state.
-  
-                      Heroicon name: solid/plus-sm
-                    -->
+
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd"
                                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                        <!--
-                      Collapse icon, show/hide based on section open state.
-  
-                      Heroicon name: solid/minus-sm
-                    -->
+
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fill-rule="evenodd"
@@ -367,7 +303,7 @@
             </div>
 
             <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
+                <div class="relative z-10 flex items-baseline justify-between pt-12 pb-6 border-b border-gray-200">
                     <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">New Arrivals</h1>
 
                     <div class="flex items-center">
@@ -388,25 +324,11 @@
                                 </button>
                             </div>
 
-                            <!--
-                Dropdown menu, show/hide based on menu state.
-  
-                Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-              -->
                             <div class="origin-top-right absolute hidden right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
                                 id="drop">
                                 <div class="py-1" role="none">
-                                    <!--
-                    Active: "bg-gray-100", Not Active: ""
-  
-                    Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
-                  -->
+
                                     <a href="#" class="font-medium text-gray-900 block px-4 py-2 text-sm"
                                         role="menuitem" tabindex="-1" id="menu-item-0">
                                         Most Popular
@@ -435,15 +357,6 @@
                             </div>
                         </div>
 
-                        <button type="button" class="p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500">
-                            <span class="sr-only">View grid</span>
-                            <!-- Heroicon name: solid/view-grid -->
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path
-                                    d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                            </svg>
-                        </button>
                         <button type="button" id="hero"
                             class="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden">
                             <span class="sr-only">Filters</span>
@@ -508,22 +421,14 @@
                                             Color
                                         </span>
                                         <span class="ml-6 flex items-center">
-                                            <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
+
                                             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" id="plus">
                                                 <path fill-rule="evenodd"
                                                     d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
+
                                             <svg class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" id="minus">
                                                 <path fill-rule="evenodd"
@@ -598,22 +503,14 @@
                                             Category
                                         </span>
                                         <span class="ml-6 flex items-center">
-                                            <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
+
                                             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" id="catplus">
                                                 <path fill-rule="evenodd"
                                                     d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
+
                                             <svg class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
                                                 id="catminus">
@@ -684,22 +581,12 @@
                                             Size
                                         </span>
                                         <span class="ml-6 flex items-center">
-                                            <!--
-                        Expand icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/plus-sm
-                      -->
                                             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" id="splus">
                                                 <path fill-rule="evenodd"
                                                     d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            <!--
-                        Collapse icon, show/hide based on section open state.
-  
-                        Heroicon name: solid/minus-sm
-                      -->
                                             <svg class="h-5 w-5 hidden" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" id="sminus">
                                                 <path fill-rule="evenodd"
@@ -994,6 +881,4 @@
             </main>
         </div>
     </div>
-
-
 </x-app-layout>

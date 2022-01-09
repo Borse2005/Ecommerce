@@ -14,7 +14,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @guest
                         <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
-                            {{ __('Dashboard') }}
+                            {{ __('Home') }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('products') }}" :active="request()->routeIs('products')">
                             {{ __('Product') }}
