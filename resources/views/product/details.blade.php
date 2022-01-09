@@ -19,7 +19,7 @@
                 <dl>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Product Name") }}
+                            {{ __('Product Name') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->product }}
@@ -27,7 +27,7 @@
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Category") }}
+                            {{ __('Category') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->category->category }}
@@ -35,7 +35,7 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Subcategory") }}
+                            {{ __('Subcategory') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->subcategory->subcategory }}
@@ -43,15 +43,15 @@
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Brand") }}
+                            {{ __('Brand') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                           {{ $products->brand }}
+                            {{ $products->brand }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Price") }}
+                            {{ __('Price') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->price }}
@@ -59,7 +59,7 @@
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Discount") }}
+                            {{ __('Discount') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->discount }}
@@ -67,7 +67,7 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Stock") }}
+                            {{ __('Stock') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->stock }}
@@ -75,7 +75,7 @@
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Color") }}
+                            {{ __('Color') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             {{ $products->color }}
@@ -83,22 +83,29 @@
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Product Thumbnail") }}
+                            {{ __('Product Thumbnail') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <img class="inline object-cover w-16 h-16 mr-2 rounded-full" src="{{ Storage::url($products->thumbnail) }}" alt="Profile image"/>
+                            <a href="{{ Storage::url($products->thumbnail) }}">
+                                <img class="inline object-cover w-16 h-16 mr-2 rounded-full"
+                                src="{{ Storage::url($products->thumbnail) }}" alt="Profile image" />
+                            </a>
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            {{ __("Product Image") }}
+                            {{ __('Product Image') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             <div class="  -space-x-4" style="display: flex">
                                 @foreach ($products->image as $images)
-                                <img class="relative z-30 inline object-cover w-12 h-12 border-2 border-white rounded-full" src="{{ Storage::disk('public')->url($images->image); }}" alt="Profile image"/>
+                                    <a href="{{ Storage::disk('public')->url($images->image) }}">
+                                        <img class="relative z-30 inline object-cover w-12 h-12 border-2 border-white rounded-full"
+                                            src="{{ Storage::disk('public')->url($images->image) }}"
+                                            alt="Profile image" />
+                                    </a>
                                 @endforeach
-                              </div>
+                            </div>
                         </dd>
                     </div>
                 </dl>
