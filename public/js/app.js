@@ -5473,6 +5473,50 @@ jQuery('[data-type="adhaar-number"]').on("change, blur", function () {
     jQuery(this).removeClass("highlight-error");
   }
 });
+jQuery(document).ready(function () {
+  jQuery("#menu-button").click(function () {
+    jQuery("#drop").toggle('hidden');
+  });
+}); // Color 
+
+jQuery(document).ready(function () {
+  jQuery('#plus').click(function () {
+    jQuery('#filter-section-0').show();
+    jQuery("#plus").hide();
+    jQuery("#minus").show();
+  });
+  jQuery('#minus').click(function () {
+    jQuery('#filter-section-0').hide();
+    jQuery("#minus").hide();
+    jQuery("#plus").show();
+  });
+}); // Category 
+
+jQuery(document).ready(function () {
+  jQuery('#catplus').click(function () {
+    jQuery('#filter-section-1').show();
+    jQuery("#catplus").hide();
+    jQuery("#catminus").show();
+  });
+  jQuery('#catminus').click(function () {
+    jQuery('#filter-section-1').hide();
+    jQuery("#catminus").hide();
+    jQuery("#catplus").show();
+  });
+}); // Size 
+
+jQuery(document).ready(function () {
+  jQuery('#splus').click(function () {
+    jQuery('#filter-section-2').show();
+    jQuery("#splus").hide();
+    jQuery("#sminus").show();
+  });
+  jQuery('#sminus').click(function () {
+    jQuery('#filter-section-2').hide();
+    jQuery("#sminus").hide();
+    jQuery("#splus").show();
+  });
+});
 
 /***/ }),
 
