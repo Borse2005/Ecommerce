@@ -21,7 +21,12 @@ class Product extends Model
         'discount',
         'stock',
         'color',
-        'image'
+        'image',
+        'ram',
+        'size',
+        'battery',
+        'rom',
+        'processor'
     ];
 
     public function category(){

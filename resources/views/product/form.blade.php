@@ -88,6 +88,100 @@
         <div class="mt-3">
             <div class="grid grid-cols-0 gap-6">
                 <div class="col-span-6 sm:col-span-3">
+                    <label for="ram" class="block text-sm font-medium text-gray-700">Ram</label>
+                    <select name="ram" id="ram"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('ram') border-red-500 @enderror">
+                        <option selected disabled>Select Random access memory</option>
+                        <option value="1">1GB</option>
+                        <option value="2">2GB</option>
+                        <option value="4">4GB</option>
+                        <option value="6">6GB</option>
+                        <option value="8">8GB</option>
+                        <option value="16">16GB</option>
+                    </select>
+                </div>
+            </div>
+            @error('ram')
+                <div class="text-red-500 font-bold mt-2">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mt-3">
+            <div class="grid grid-cols-0 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="rom" class="block text-sm font-medium text-gray-700">Rom</label>
+                    <select name="rom" id="rom"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('rom') border-red-500 @enderror">
+                        <option selected disabled>Select read only memory</option>
+                        <option value="16">16GB</option>
+                        <option value="32">32GB</option>
+                        <option value="64">64GB</option>
+                        <option value="128">128GB</option>
+                        <option value="512">512GB</option>
+                        <option value="1">1TB</option>
+                        <option value="2">2TB</option>
+                    </select>
+                </div>
+            </div>
+            @error('rom')
+                <div class="text-red-500 font-bold mt-2">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mt-3">
+            <div class="grid grid-cols-0 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="battery" class="block text-sm font-medium text-gray-700">Battery AMPS</label>
+                    <select name="battery" id="battery"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('battery') border-red-500 @enderror">
+                        <option selected disabled>Select Battery ampere</option>
+                        <option value="3000">3000 AMPS</option>
+                        <option value="4000">4000 AMPS</option>
+                        <option value="5000">5000 AMPS</option>
+                        <option value="6000">6000 AMPS</option>
+                        <option value="7000">7000 AMPS</option>
+                        <option value="8000">8000 AMPS</option>
+                        <option value="9000">9000 AMPS</option>
+                        <option value="10000">10000 AMPS</option>
+                    </select>
+                </div>
+            </div>
+            @error('battery')
+                <div class="text-red-500 font-bold mt-2">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mt-3">
+            <div class="grid grid-cols-0 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="size" class="block text-sm font-medium text-gray-700">Screen Size</label>
+                    <input type="text" name="size" id="size" autocomplete="given-name" value="{{ old('size',optional($products ?? null)->size)}}"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('size') border-red-500 @enderror">
+                </div>
+            </div>
+            @error('size')
+                <div class="text-red-500 font-bold mt-2">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mt-3">
+            <div class="grid grid-cols-0 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                    <label for="processor" class="block text-sm font-medium text-gray-700">Processor</label>
+                    <input type="text" name="processor" id="processor" autocomplete="given-name" value="{{ old('processor',optional($products ?? null)->processor)}}"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('processor') border-red-500 @enderror">
+                </div>
+            </div>
+            @error('processor')
+                <div class="text-red-500 font-bold mt-2">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mt-3">
+            <div class="grid grid-cols-0 gap-6">
+                <div class="col-span-6 sm:col-span-3">
                     <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                     <textarea name="description" id="description" cols="10" rows="5"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('description') border-red-500 @enderror">{{ old('description', optional($products ?? null)->description) }}</textarea>
                 </div>

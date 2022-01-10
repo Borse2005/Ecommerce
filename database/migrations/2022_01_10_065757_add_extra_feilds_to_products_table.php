@@ -14,11 +14,11 @@ class AddExtraFeildsToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('ram');
-            $table->integer('rom');
-            $table->integer('size');
-            $table->integer('battery');
+            $table->bigInteger('ram');
+            $table->bigInteger('size');
+            $table->bigInteger('battery');
             $table->string('processor');
+            $table->bigInteger('rom');
         });
     }
 

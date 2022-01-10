@@ -34,6 +34,11 @@ class Product extends FormRequest
             'discount' => 'required|numeric',
             'stock' => 'required|numeric',
             'color' => 'required|min:2|max:20',
+            'ram' => 'required',
+            'rom' => 'required',
+            'size' => 'required|max:50|numeric',
+            'battery' => 'required',
+            'processor' => 'required|string|min:5|max:30',
             // 'image[]' => 'required|image|dimensions:min_width=50,min_height=50|mimes:png,jpg',
         ];
     }
