@@ -86,10 +86,9 @@
                             {{ __('Product Thumbnail') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <a href="{{ Storage::url($products->thumbnail) }}">
-                                <img class="inline object-cover w-16 h-16 mr-2 rounded-full"
-                                src="{{ Storage::url($products->thumbnail) }}" alt="Profile image" />
-                            </a>
+                            <img class="inline object-cover w-16 h-16 mr-2 rounded-full cursor-pointer"
+                                src="{{ Storage::url($products->thumbnail) }}" alt="Profile image"
+                                onclick="window.open('{{ Storage::url($products->thumbnail) }}', '_blank');" />
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -99,11 +98,9 @@
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             <div class="  -space-x-4" style="display: flex">
                                 @foreach ($products->image as $images)
-                                    <a href="{{ Storage::disk('public')->url($images->image) }}">
-                                        <img class="relative z-30 inline object-cover w-12 h-12 border-2 border-white rounded-full"
-                                            src="{{ Storage::disk('public')->url($images->image) }}"
-                                            alt="Profile image" />
-                                    </a>
+                                    <img class="relative z-30 inline object-cover w-12 h-12 border-2 border-white rounded-full cursor-pointer"
+                                        src="{{ Storage::disk('public')->url($images->image) }}" alt="Profile image"
+                                        onclick="window.open('{{ Storage::disk('public')->url($images->image) }}', '_blank');" />
                                 @endforeach
                             </div>
                         </dd>
