@@ -6,3 +6,12 @@
     padding-left: 70px;
     padding-right: 70px;
 }
+
+.currency {
+    padding-left:25px;  
+}
+
+.currency-symbol {
+    position:absolute;
+    padding: 7px 10px;
+}

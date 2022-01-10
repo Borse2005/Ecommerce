@@ -2087,6 +2087,13 @@ select {
     padding-left: 70px;
     padding-right: 70px;
 }
+.currency {
+    padding-left:25px;  
+}
+.currency-symbol {
+    position:absolute;
+    padding: 7px 10px;
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
