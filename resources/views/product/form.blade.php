@@ -90,9 +90,10 @@
                 <div class="col-span-6 sm:col-span-3">
                     <label for="ram" class="block text-sm font-medium text-gray-700">Ram</label>
                     <select name="ram" id="ram"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('ram') border-red-500 @enderror">
-                        <option selected disabled>Select Random access memory</option>
+                        <option value="null" selected disabled>Select Random access memory</option>
                         <option value="1"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>1GB</option>
                         <option value="2"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>2GB</option>
+                        <option value="3"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>3GB</option>
                         <option value="4"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>4GB</option>
                         <option value="6"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>6GB</option>
                         <option value="8"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>8GB</option>
