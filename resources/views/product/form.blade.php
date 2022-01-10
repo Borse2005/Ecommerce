@@ -91,12 +91,12 @@
                     <label for="ram" class="block text-sm font-medium text-gray-700">Ram</label>
                     <select name="ram" id="ram"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('ram') border-red-500 @enderror">
                         <option selected disabled>Select Random access memory</option>
-                        <option value="1">1GB</option>
-                        <option value="2">2GB</option>
-                        <option value="4">4GB</option>
-                        <option value="6">6GB</option>
-                        <option value="8">8GB</option>
-                        <option value="16">16GB</option>
+                        <option value="1"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>1GB</option>
+                        <option value="2"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>2GB</option>
+                        <option value="4"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>4GB</option>
+                        <option value="6"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>6GB</option>
+                        <option value="8"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>8GB</option>
+                        <option value="16"  {{ old('ram', optional($products ?? null)->ram ? 'selected' : '') }}>16GB</option>
                     </select>
                 </div>
             </div>
@@ -112,13 +112,13 @@
                     <label for="rom" class="block text-sm font-medium text-gray-700">Rom</label>
                     <select name="rom" id="rom"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('rom') border-red-500 @enderror">
                         <option selected disabled>Select read only memory</option>
-                        <option value="16">16GB</option>
-                        <option value="32">32GB</option>
-                        <option value="64">64GB</option>
-                        <option value="128">128GB</option>
-                        <option value="512">512GB</option>
-                        <option value="1">1TB</option>
-                        <option value="2">2TB</option>
+                        <option value="16"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>16GB</option>
+                        <option value="32"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>32GB</option>
+                        <option value="64"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>64GB</option>
+                        <option value="128"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>128GB</option>
+                        <option value="512"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>512GB</option>
+                        <option value="1"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>1TB</option>
+                        <option value="2"  {{ old('rom', optional($products ?? null)->rom ? 'selected' : '') }}>2TB</option>
                     </select>
                 </div>
             </div>
@@ -134,14 +134,14 @@
                     <label for="battery" class="block text-sm font-medium text-gray-700">Battery AMPS</label>
                     <select name="battery" id="battery"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('battery') border-red-500 @enderror">
                         <option selected disabled>Select Battery ampere</option>
-                        <option value="3000">3000 AMPS</option>
-                        <option value="4000">4000 AMPS</option>
-                        <option value="5000">5000 AMPS</option>
-                        <option value="6000">6000 AMPS</option>
-                        <option value="7000">7000 AMPS</option>
-                        <option value="8000">8000 AMPS</option>
-                        <option value="9000">9000 AMPS</option>
-                        <option value="10000">10000 AMPS</option>
+                        <option value="3000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>3000 AMPS</option>
+                        <option value="4000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>4000 AMPS</option>
+                        <option value="5000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>5000 AMPS</option>
+                        <option value="6000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>6000 AMPS</option>
+                        <option value="7000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>7000 AMPS</option>
+                        <option value="8000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>8000 AMPS</option>
+                        <option value="9000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>9000 AMPS</option>
+                        <option value="10000" {{ old('battery', optional($products ?? null)->battery ? 'selected' : '') }}>10000 AMPS</option>
                     </select>
                 </div>
             </div>
