@@ -16,7 +16,6 @@ class AddExtraFeildToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->string('thumbnail');
             $table->text('description');
-            $table->string('brand');
             $table->bigInteger('price');
             $table->bigInteger('discount');
             $table->bigInteger('stock');

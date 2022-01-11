@@ -31,13 +31,14 @@ class Category extends Model
         parent::boot();
 
         static::deleting(function(Category $category){
-
-            foreach ($category->image as $key => $value) {
-                Storage::disk('public')->delete($value->image);
+            if (!empty($category->image)) {
+                foreach ($category->image as $key => $value) {
+                    Storage::disk('public')->delete($value->image);
+                }
             }
-
-            Storage::disk()->delete($category->product->thumbnail);
-            
+            if ($category->product != null) {
+                Storage::disk('public')->delete($category->product->thumbnail);
+            }
             $category->image()->delete();
             $category->product()->delete();
             $category->subcategory()->delete();

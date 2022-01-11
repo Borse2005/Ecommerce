@@ -16,7 +16,6 @@ class Product extends Model
         'product',
         'thumbnail',
         'description',
-        'brand',
         'price',
         'discount',
         'stock',

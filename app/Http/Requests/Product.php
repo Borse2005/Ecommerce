@@ -29,7 +29,6 @@ class Product extends FormRequest
             'subcategory_id' => 'required|required_if:category_id,1',
             'thumbnail' => 'required|image|max:2048|dimensions:min_width=50,min_height=50|mimes:png,jpg',
             'description' => 'required|min:10|max:1000',
-            'brand' => 'required|min:3|max:30',
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'stock' => 'required|numeric',

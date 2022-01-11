@@ -91,10 +91,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request)
     {
+        $category = Category::findOrFail($request->cat_id);
         $category->delete();
-
         session()->flash('category', 'Category has been Deleted!');
         return redirect()->route('category.index');
     }

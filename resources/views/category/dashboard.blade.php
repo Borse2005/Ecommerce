@@ -67,18 +67,8 @@
                                             <span class=" py-2 px-4 rounded">
                                                 <a href="{{ route('category.edit', $categories->id) }}"
                                                     class="text-indigo-600 hover:text-indigo-900 ">{{ __('Edit') }}</a>
+                                                <button type="button" class="text-indigo-600 hover:text-indigo-900 font-600 px-2" value="{{ $categories->id }}" id="cat_delete">Delete</button>
                                             </span>
-                                            <a class="text-indigo-600 hover:text-indigo-900 px-4" 
-                                                href="{{ route('category.destroy', $categories->id) }}" onclick="  event.preventDefault();
-                                                     document.getElementById('logout-form').submit(); " >
-                                                {{ __('Delete') }}
-                                            </a>
-                                            <form id="logout-form"
-                                                action="{{ route('category.destroy', $categories->id) }}"
-                                                method="POST" class="d-none" onclick="">
-                                                @csrf
-                                                @method("DELETE")
-                                            </form>
                                         </td>
                                     </tr>
                                 @empty

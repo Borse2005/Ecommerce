@@ -32,11 +32,15 @@ class Subcategory extends Model
 
         static::deleting(function(Subcategory $subcategory){
 
-            foreach ($subcategory->image as $key => $value) {
-                Storage::disk('public')->delete($value->image);
+            if (!empty($subcategory->image)) {
+                foreach ($subcategory->image as $key => $value) {
+                    Storage::disk('public')->delete($value->image);
+                }
             }
             
-            Storage::disk('public')->delete($subcategory->product->thumbnail);
+            if ($subcategory->product != null) {
+                Storage::disk('public')->delete($subcategory->product->thumbnail);
+            }
             
             $subcategory->image()->delete();
             $subcategory->product()->delete();
