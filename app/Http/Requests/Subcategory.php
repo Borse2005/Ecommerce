@@ -24,7 +24,7 @@ class Subcategory extends FormRequest
     public function rules()
     {
         return [
-            'subcategory' => 'required|min:5|max:40|unique:subcategories,subcategory',
+            'subcategory' => 'required|min:2|max:40|unique:subcategories,subcategory',
             // 'category_id' => 'required'
         ];
     }
