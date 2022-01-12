@@ -63,16 +63,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    
-    <script>
-        $("#image").on("change", function() {
-            if ($("#image")[0].files.length > 2) {
-                alert("You can select only 2 images");
-            } else {
-                $("#imageUploadForm").submit();
-            }
-        });
-    </script>
+
 </body>
 
 </html>

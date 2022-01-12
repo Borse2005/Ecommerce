@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UploadCount;
+use App\Rules\UploadLessCount;
 use Illuminate\Foundation\Http\FormRequest;
 
 class Product extends FormRequest
@@ -38,7 +40,7 @@ class Product extends FormRequest
             'size' => 'required|max:50|numeric',
             'battery' => 'required',
             'processor' => 'required|string|min:5|max:30',
-            'image' => 'required',
+            'image' => ['required', new UploadLessCount ,new UploadCount],
             'image.*' => 'image|dimensions:min_width=50,min_height=50|mimes:png,jpg|max:2048',
         ];
     }

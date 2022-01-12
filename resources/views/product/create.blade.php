@@ -12,7 +12,7 @@
                                 <input type="file" name="image[]" id="image" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  sm:text-sm border-gray-300  @error('image') border-red-500 @enderror" multiple>
                             </div>
                         </div>
-                        @error('image[]')
+                        @error('image')
                             <div class="text-red-500 font-bold mt-2">
                                 {{ $message }}
                             </div>
