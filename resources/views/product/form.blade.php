@@ -189,7 +189,7 @@
             <div class="grid grid-cols-0 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                     <label for="thumbnail" class="block text-sm font-medium text-gray-700">Thumnail Image</label>
-                    <input type="file" name="thumbnail" id="thumbnail"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  sm:text-sm border-gray-300  @error('thumbnail') border-red-500 @enderror">
+                    <input type="file" name="thumbnail" maxlength="2" id="thumbnail"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  sm:text-sm border-gray-300  @error('thumbnail') border-red-500 @enderror">
                 </div>
             </div>
             @error('thumbnail')

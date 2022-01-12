@@ -40,6 +40,7 @@ class ProductController extends Controller
      */
     public function store(RequestsProduct $request)
     {
+        
         if($request->hasFile('thumbnail')){
             $path = $request->file('thumbnail')->store('Thubnail');
         }

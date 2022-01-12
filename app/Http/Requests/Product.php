@@ -38,7 +38,8 @@ class Product extends FormRequest
             'size' => 'required|max:50|numeric',
             'battery' => 'required',
             'processor' => 'required|string|min:5|max:30',
-            // 'image[]' => 'required|image|dimensions:min_width=50,min_height=50|mimes:png,jpg',
+            'image' => 'required',
+            'image.*' => 'image|dimensions:min_width=50,min_height=50|mimes:png,jpg|max:2048',
         ];
     }
 }
