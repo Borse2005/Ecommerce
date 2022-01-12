@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\Category as ScopesCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -29,6 +30,8 @@ class Category extends Model
     public static function boot(){
 
         parent::boot();
+
+        Static::addGlobalScope(new ScopesCategory);
 
         static::deleting(function(Category $category){
             if (!empty($category->image)) {

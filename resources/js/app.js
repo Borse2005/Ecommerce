@@ -106,3 +106,22 @@ jQuery(document).ready(function(){
 $(document).ready(function() {
     $('input.currency').currencyInput();
 });
+
+// Delete Pop 
+
+jQuery(document).ready(function() {
+    jQuery(document).on('click', '#cat_delete', function() {
+        var value = jQuery(this).val();
+        jQuery('#pop').show();
+        jQuery('#cat_id').val(value);
+    });
+});
+
+
+jQuery(document).ready(function() {
+    jQuery(document).on('click', '#subcat_delete', function() {
+        var value = jQuery(this).val();
+        jQuery('#subpop').show();
+        jQuery('#subcat_id').val(value);
+    });
+});

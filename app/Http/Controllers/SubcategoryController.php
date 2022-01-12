@@ -93,8 +93,9 @@ class SubcategoryController extends Controller
      * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subcategory $subcategory)
+    public function destroy(Request $request)
     {
+        $subcategory = Subcategory::findOrFail($request->subcat_id);
         $subcategory->delete();
         session()->flash('subcategory', 'Subcategory has been Deleted!');
         return redirect()->route('subcategory.show',$subcategory->category_id);  

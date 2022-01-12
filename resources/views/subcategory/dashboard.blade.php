@@ -60,18 +60,8 @@
                                             <span class=" py-2 px-4 rounded">
                                                 <a href="{{ route('subcategory.edit', $subcategories->id) }}"
                                                     class="text-indigo-600 hover:text-indigo-900 ">{{ __('Edit') }}</a>
+                                                <button type="button" class="text-indigo-600 hover:text-indigo-900 font-600 px-2 font-semibold" value="{{ $subcategories->id }}" id="subcat_delete">Delete</button>
                                             </span>
-                                            <a class="text-indigo-600 hover:text-indigo-900 px-4" 
-                                                href="{{ route('subcategory.destroy', $subcategories->id) }}" onclick="  event.preventDefault();
-                                                     document.getElementById('logout-form').submit(); " >
-                                                {{ __('Delete') }}
-                                            </a>
-                                            <form id="logout-form"
-                                                action="{{ route('subcategory.destroy', $subcategories->id) }}"
-                                                method="POST" class="d-none" onclick="">
-                                                @csrf
-                                                @method("DELETE")
-                                            </form>
                                         </td>
                                     </tr>
                                 @empty

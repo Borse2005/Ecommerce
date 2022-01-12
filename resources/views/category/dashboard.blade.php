@@ -67,7 +67,7 @@
                                             <span class=" py-2 px-4 rounded">
                                                 <a href="{{ route('category.edit', $categories->id) }}"
                                                     class="text-indigo-600 hover:text-indigo-900 ">{{ __('Edit') }}</a>
-                                                <button type="button" class="text-indigo-600 hover:text-indigo-900 font-600 px-2" value="{{ $categories->id }}" id="cat_delete">Delete</button>
+                                                <button type="button" class="text-indigo-600 hover:text-indigo-900 font-600 px-2 font-semibold" value="{{ $categories->id }}" id="cat_delete">Delete</button>
                                             </span>
                                         </td>
                                     </tr>

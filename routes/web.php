@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::put('/subcategory/{subcategory}',[SubcategoryController::class, 'update'])->name('subcategory.update');
     Route::get('/subcategory/{subcategory}',[SubcategoryController::class, 'edit'])->name('subcategory.edit');
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
-    Route::delete('/subcategory/destroy/{subcategory}',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
+    Route::delete('/subcategory/destroy',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
 
     Route::resource('/category', CategoryController::class)->except('destroy');
     Route::delete('/category/delete', [CategoryController::class, 'destroy'])->name('category_destroy');
