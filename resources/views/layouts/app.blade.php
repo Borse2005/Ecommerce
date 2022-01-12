@@ -62,16 +62,6 @@
 
     @livewireScripts
 
-    <script>
-        jQuery(document).ready(function() {
-            jQuery(document).on('click', '#pro_delete', function() {
-                var value = jQuery(this).val();
-                jQuery('#propop').show();
-                jQuery('#pro_id').val(value);
-            });
-        });
-    </script>
-
 </body>
 
 </html>
