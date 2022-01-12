@@ -135,3 +135,11 @@ jQuery(document).ready(function() {
         jQuery('#pro_id').val(value);
     });
 });
+
+// Bold And Italic
+
+ClassicEditor
+.create( document.querySelector( '#editor' ) )
+.catch( error => {
+    console.error( error );
+} );

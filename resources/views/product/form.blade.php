@@ -166,11 +166,12 @@
                 </div>
             @enderror
         </div>
+
         <div class="mt-3">
             <div class="grid grid-cols-0 gap-6">
                 <div class="col-span-6 sm:col-span-3">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea name="description" id="description" cols="10" rows="5"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('description') border-red-500 @enderror">{{ old('description', optional($products ?? null)->description) }}</textarea>
+                    <label for="editor" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea name="description" id="editor"  rows="4"  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('description') border-red-500 @enderror">{{ old('description', optional($products ?? null)->description) }}</textarea>
                 </div>
             </div>
             @error('description')

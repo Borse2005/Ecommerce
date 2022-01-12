@@ -5562,6 +5562,10 @@ jQuery(document).ready(function () {
     jQuery('#propop').show();
     jQuery('#pro_id').val(value);
   });
+}); // Bold And Italic
+
+ClassicEditor.create(document.querySelector('#editor'))["catch"](function (error) {
+  console.error(error);
 });
 
 /***/ }),
