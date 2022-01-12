@@ -115,8 +115,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
+        $product = Product::findOrFail($request->pro_id);
         if ($product->thumbnail) {
             Storage::delete($product->thumbnail);
         }

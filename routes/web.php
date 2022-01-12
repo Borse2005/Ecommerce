@@ -35,11 +35,13 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::get('/subcategory/{subcategory}',[SubcategoryController::class, 'edit'])->name('subcategory.edit');
     Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
     Route::delete('/subcategory/destroy',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
+    Route::delete('/products/delete', [ProductController::class, 'destroy'])->name('products.delete');
 
     Route::resource('/category', CategoryController::class)->except('destroy');
     Route::delete('/category/delete', [CategoryController::class, 'destroy'])->name('category_destroy');
     Route::resource('/user', UserController::class);
-    Route::resource('/product', ProductController::class);
+    Route::resource('/product', ProductController::class)->except('destroy');
+
 });
 
 

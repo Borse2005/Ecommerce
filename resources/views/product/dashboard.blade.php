@@ -68,15 +68,7 @@
                                             <a href="{{ route('product.show',$products->id) }}" class="text-indigo-600 hover:text-indigo-900 ">{{ __('Details') }}</a>
                                         </span>
                                         <a href="{{ route('product.edit',$products->id) }}" class="text-indigo-600 hover:text-indigo-900 px-4">{{ __('Edit') }}</a>
-                                        <a class="text-indigo-600 hover:text-indigo-900 px-4" href="{{ route('product.destroy',$products->id) }}" onclick="  event.preventDefault();
-                                                     document.getElementById('logout-form').submit(); ">
-                                            {{ __('Delete') }}
-                                        </a>
-                                        <form id="logout-form" action="{{ route('product.destroy',$products->id) }}" method="POST" class="d-none"
-                                            onclick="">
-                                            @csrf
-                                            @method("DELETE")
-                                        </form>
+                                        <button type="button" class="text-indigo-600 hover:text-indigo-900 font-600 px-2 font-semibold" value="{{ $products->id }}" id="pro_delete">Delete</button>
                                     </td>
                                 </tr>
                                 @empty

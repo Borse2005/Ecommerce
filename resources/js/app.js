@@ -108,7 +108,7 @@ $(document).ready(function() {
 });
 
 // Delete Pop 
-
+// Category 
 jQuery(document).ready(function() {
     jQuery(document).on('click', '#cat_delete', function() {
         var value = jQuery(this).val();
@@ -117,7 +117,7 @@ jQuery(document).ready(function() {
     });
 });
 
-
+// Subcatagoery 
 jQuery(document).ready(function() {
     jQuery(document).on('click', '#subcat_delete', function() {
         var value = jQuery(this).val();
@@ -125,3 +125,6 @@ jQuery(document).ready(function() {
         jQuery('#subcat_id').val(value);
     });
 });
+
+// Products
+
