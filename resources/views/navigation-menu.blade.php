@@ -16,15 +16,13 @@
                         <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                             {{ __('Home') }}
                         </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('products') }}" :active="request()->routeIs('products')">
-                            {{ __('Product') }}
-                        </x-jet-nav-link>
                     @else
                         @if (Auth::user()->role_id == 2)
-                        <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
-                            {{ __('Dashboard') }}
-                        </x-jet-nav-link>
-                            <x-jet-nav-link href="{{ route('product.index') }}" :active="request()->routeIs('product.index')">
+                            <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
+                                {{ __('Dashboard') }}
+                            </x-jet-nav-link>
+                            <x-jet-nav-link href="{{ route('product.index') }}"
+                                :active="request()->routeIs('product.index')">
                                 {{ __('Product') }}
                             </x-jet-nav-link>
                             <x-jet-nav-link href="" :active="request()->routeIs('')">
@@ -39,12 +37,9 @@
                             </x-jet-nav-link>
                         @endif
                         @if (Auth::user()->role_id == 1)
-                        <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
-                            {{ __('Dashboard') }}
-                        </x-jet-nav-link>
-                        <x-jet-nav-link href="" :active="request()->routeIs('')">
-                            {{ __('User') }}
-                        </x-jet-nav-link>
+                            <x-jet-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
+                                {{ __('Dashboard') }}
+                            </x-jet-nav-link>
                         @endif
                     @endguest
                 </div>
@@ -108,7 +103,16 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+                    <span class="mx-1">
+                        <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+                        <span>5</span>
+                    </span>
+                    <span>
+                        <i class="fa fa-heart"></i>
+                        <span>5</span>
+                    </span>
                     @guest
+                        
                         @if (Route::has('login'))
                             <a class=" px-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif
@@ -117,7 +121,9 @@
                             <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
+
                         <x-jet-dropdown align="right" width="48">
+
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button
@@ -127,6 +133,7 @@
                                             alt="{{ Auth::user()->name }}" />
                                     </button>
                                 @else
+                                
                                     <span class="inline-flex rounded-md">
                                         <button type="button"
                                             class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
@@ -139,6 +146,7 @@
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </button>
+                                        
                                     </span>
                                 @endif
                             </x-slot>
@@ -166,7 +174,7 @@
                                     @csrf
 
                                     <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
+                                                                this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-dropdown-link>
                                 </form>
@@ -198,8 +206,8 @@
             <x-jet-responsive-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-            
-            
+
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -246,7 +254,7 @@
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            this.closest('form').submit();">
+                                                this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>

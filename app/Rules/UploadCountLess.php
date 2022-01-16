@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class UploadLessCount implements Rule
+class UploadCountLess implements Rule
 {
     /**
      * Create a new rule instance.

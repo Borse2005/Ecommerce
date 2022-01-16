@@ -20,12 +20,8 @@ class Product extends Model
         'discount',
         'stock',
         'color',
-        'image',
-        'ram',
-        'size',
-        'battery',
-        'rom',
-        'processor'
+        'Specifications',
+        'highlight',
     ];
 
     public function category(){
@@ -40,6 +36,11 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
     public static function boot(){
         parent::boot();
 
@@ -48,6 +49,7 @@ class Product extends Model
                 Storage::delete($value->image);
             }
             $product->image()->delete();
+            $product->cart()->delete();
         });
     }
 }

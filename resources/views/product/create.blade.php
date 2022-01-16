@@ -31,4 +31,20 @@
             </div>
         </div>
     </div>
+
+@section('script')
+<script>
+    ClassicEditor
+    .create( document.querySelector( '#highlight' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+
+    ClassicEditor
+    .create( document.querySelector( '#specifications' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+@endsection
 </x-app-layout>

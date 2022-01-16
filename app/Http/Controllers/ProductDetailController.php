@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
-use App\Models\Session;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class ProductDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        $product = Product::take(4)->get();
-        $user = User::all();
-        $session = Session::all();
-        return view('dashboard', compact('category', 'product', 'user', 'session'));
+        //
     }
 
     /**
@@ -53,8 +46,9 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        $category = Category::with('product')->findOrFail($id);
-        return view('product', compact('category'));
+        $product = Product::with('image')->findOrFail($id);
+        $key = 1;
+        return view('details', compact('product', 'key'));
     }
 
     /**

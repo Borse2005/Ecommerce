@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Product as RequestsProduct;
 use App\Models\Image;
 use App\Models\Product;
+use App\Rules\UploadCountLess;
+use App\Rules\UploadCountMore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -38,22 +40,46 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestsProduct $request)
+    public function store(Request $request)
     {
+        $validation = $request->validate([
+            'product' => 'required|min:5|max:50',
+            'category_id' => 'required',
+            'subcategory_id' => 'required|required_if:category_id,1',
+            'thumbnail' => 'required|max:2048|mimes:png,jpg,jpeg|dimensions:max_height:500,max_width:1000|image',
+            'description' => 'required|min:10|max:1000',
+            'price' => 'required|numeric',
+            'discount' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'color' => 'required|min:2|max:20',
+            'image' => ['required', new UploadCountLess, new UploadCountMore],
+            'highlight' => 'required|min:5',
+            'specifications' => 'required|min:5',
+        ]);
         
         if($request->hasFile('thumbnail')){
             $path = $request->file('thumbnail')->store('Thubnail');
         }
         
-        $validation = $request->validated();
-        $validation['thumbnail'] = $path;
-        // $validation['image'] = json_encode($data);
-        $product = Product::create($validation);
-        
+        $product = new Product();
+        $product->product = $request->product;
+        $product->category_id  = $request->category_id ;
+        $product->subcategory_id  = $request->subcategory_id ;
+        $product->thumbnail = $path;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->stock = $request->stock;
+        $product->color = $request->color;
+        $product->highlight = $request->highlight;
+        $product->specifications = $request->specifications;
+        $product->save();
+
+
         if ($request->hasFile('image')) {
-            foreach ($request->File('image') as $file) {
+            foreach ($request->file('image') as $file) {
                 $name = $file->store('image');
-                $images[]=$name;
+                $images[] = $name;
                 Image::insert( ['image'=> $name, 'product_id' => $product->id, 'category_id' => $product->category_id, 'subcategory_id' => $product->subcategory_id]);
             }
         }

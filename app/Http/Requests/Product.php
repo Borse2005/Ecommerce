@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\UploadCount;
-use App\Rules\UploadLessCount;
 use Illuminate\Foundation\Http\FormRequest;
 
 class Product extends FormRequest
@@ -29,19 +27,13 @@ class Product extends FormRequest
             'product' => 'required|min:5|max:50',
             'category_id' => 'required',
             'subcategory_id' => 'required|required_if:category_id,1',
-            'thumbnail' => 'required|image|max:2048|dimensions:min_width=50,min_height=50|mimes:png,jpg',
             'description' => 'required|min:10|max:1000',
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'stock' => 'required|numeric',
             'color' => 'required|min:2|max:20',
-            'ram' => 'required',
-            'rom' => 'required',
-            'size' => 'required|max:50|numeric',
-            'battery' => 'required',
-            'processor' => 'required|string|min:5|max:30',
-            'image' => ['required', new UploadLessCount ,new UploadCount],
-            'image.*' => 'image|dimensions:min_width=50,min_height=50|mimes:png,jpg|max:2048',
+            'highlight' => 'required|min:5',
+            'specifications' => 'required|min:5',
         ];
     }
 }

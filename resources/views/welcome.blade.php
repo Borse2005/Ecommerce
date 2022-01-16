@@ -44,9 +44,9 @@
             alt="">
     </div>
 </div>
-
+<hr>
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="py-12 bg-gray-100">
+<div class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:text-center">
             <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Transactions</h2>
@@ -140,9 +140,9 @@
         </div>
     </div>
 </div>
-
+<hr>
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="bg-gray-50">
+<div class="bg-white">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:justify-center lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             <span class="block">Ready to dive in?</span>
@@ -165,18 +165,16 @@
     </div>
 </div>
 
-
-<div class="bg-gray-100">
+<hr>
+<div class="bg-white">
     <div class="max-w-2xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-6">
         <h2 class="py-6 px-2 font-bold">{{ __("Latest Product") }}</h2>
 
         <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            <a href="#" class="group">
-                <div
-                    class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                    <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
-                        alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-                        class="w-full h-full object-center object-cover group-hover:opacity-75">
+            @forelse ($product as $products)
+            <a href="{{ route('dash.show',$products->category_id) }}" class="group">
+                <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                    <img src="{{ Storage::disk('public')->url($products->thumbnail) }}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."   class="w-full h-full object-center object-cover group-hover:opacity-75" style="height: 300px">
                 </div>
                 <h3 class="mt-4 text-sm text-gray-700">
                     Earthen Bottle
@@ -185,61 +183,18 @@
                     $48
                 </p>
             </a>
-
-            <a href="#" class="group">
-                <div
-                    class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                    <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg"
-                        alt="Olive drab green insulated bottle with flared screw lid and flat top."
-                        class="w-full h-full object-center object-cover group-hover:opacity-75">
+            @empty
+                <div>
+                    <h3 class="text-center mx-auto">Product not found</h3>
                 </div>
-                <h3 class="mt-4 text-sm text-gray-700">
-                    Nomad Tumbler
-                </h3>
-                <p class="mt-1 text-lg font-medium text-gray-900">
-                    $35
-                </p>
-            </a>
-
-            <a href="#" class="group">
-                <div
-                    class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                    <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg"
-                        alt="Person using a pen to cross a task off a productivity paper card."
-                        class="w-full h-full object-center object-cover group-hover:opacity-75">
-                </div>
-                <h3 class="mt-4 text-sm text-gray-700">
-                    Focus Paper Refill
-                </h3>
-                <p class="mt-1 text-lg font-medium text-gray-900">
-                    $89
-                </p>
-            </a>
-
-            
-            <a href="#" class="group">
-                <div
-                    class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                    <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg"
-                        alt="Hand holding black machined steel mechanical pencil with brass tip and top."
-                        class="w-full h-full object-center object-cover group-hover:opacity-75">
-                </div>
-                <h3 class="mt-4 text-sm text-gray-700">
-                    Machined Mechanical Pencil
-                </h3>
-                <p class="mt-1 text-lg font-medium text-gray-900">
-                    $35
-                </p>
-            </a>
-
-            <!-- More products... -->
+            @endforelse
         </div>
     </div>
 </div>
 
 <hr>
 
-<div class="bg-gray-100">
+<div class="bg-white">
     <div class="max-w-2xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-6">
         <h2 class="py-6 px-2 font-bold">{{ __("Extra Product") }}</h2>
 
@@ -310,6 +265,7 @@
     </div>
 </div>
 
+<hr>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="bg-white">
     <div
@@ -370,11 +326,3 @@
         </div>
     </div>
 </div>
-
-<footer>
-    <div class="p-2 text-center">
-        <h1 class="font-bold">Created by John Deo</h1>
-    </div>
-</footer>
-
-<div></div>

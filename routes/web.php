@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,17 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', DashboardController::class);
-
-Route::get('/products', function(){
-    return view('product');
-})->name('products');
 
 Route::get('back', function () {
     return redirect()->back();
 })->name('back');
 
+Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::resource('/dash', DashboardController::class);
+Route::resource('/details', ProductDetailController::class);
+Route::resource('/cart', CartController::class);
+
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
+    
     Route::get('/subcategory/show/{subcategory}',[SubcategoryController::class, 'show'])->name('subcategory.show');
     Route::post('/subcategory/store/',[SubcategoryController::class, 'store'])->name('subcategory.store');
     Route::put('/subcategory/{subcategory}',[SubcategoryController::class, 'update'])->name('subcategory.update');

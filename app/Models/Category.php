@@ -20,7 +20,7 @@ class Category extends Model
     }
 
     public function product(){
-        return $this->hasOne(Product::class);
+        return $this->hasMany(Product::class);
     }
 
     public function image(){
@@ -39,9 +39,11 @@ class Category extends Model
                     Storage::disk('public')->delete($value->image);
                 }
             }
-            if ($category->product != null) {
-                Storage::disk('public')->delete($category->product->thumbnail);
-            }
+           
+           foreach ($category->product as $key => $value) {
+                Storage::disk('public')->delete($value->thumbnail);
+           }
+
             $category->image()->delete();
             $category->product()->delete();
             $category->subcategory()->delete();
