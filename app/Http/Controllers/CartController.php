@@ -25,7 +25,7 @@ class CartController extends Controller
         $count = 0;
         $key = 0;
         foreach ($cart as  $value) {
-            if ($value->session == $session OR Auth::user()->id == $value->user_id) {
+            if ($value->session == $session ) {
                 $key ++;
                 $count += $value->id;
                 $total += ($value->product->price - $value->product->discount) * $value->qty;
