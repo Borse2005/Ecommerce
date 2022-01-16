@@ -376,3 +376,5 @@
         <h1 class="font-bold">Created by John Deo</h1>
     </div>
 </footer>
+
+<div></div>
