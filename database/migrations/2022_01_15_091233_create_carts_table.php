@@ -15,10 +15,10 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('session');
+            // $table->string('session');
             $table->integer('qty')->default(1);
             $table->foreignId('product_id')->constrained('products');
-            $table->foreignId('user_id')->nullable()->index()->constrained('users');
+            // $table->foreignId('user_id')->nullable()->index()->constrained('users');
             $table->timestamps();
         });
     }

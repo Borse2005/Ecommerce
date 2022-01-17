@@ -31,7 +31,7 @@ class AddExtraFeildToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn(['thumbnail', 'description', 'brand', 'price', 'discount', 'stock', 'color']);
+            $table->dropColumn(['thumbnail', 'description', 'price', 'discount', 'stock', 'color']);
         });
     }
 }

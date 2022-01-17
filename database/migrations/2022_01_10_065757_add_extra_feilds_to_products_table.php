@@ -14,11 +14,8 @@ class AddExtraFeildsToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->bigInteger('ram');
-            $table->bigInteger('size');
-            $table->bigInteger('battery');
-            $table->string('processor');
-            $table->bigInteger('rom');
+            $table->text('highlight');
+            $table->text('specifications');
         });
     }
 
@@ -30,7 +27,7 @@ class AddExtraFeildsToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn(['ram','rom','size','battery','processor']);
+            $table->dropColumn(['highlight','specifications']);
         });
     }
 }
