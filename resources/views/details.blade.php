@@ -29,16 +29,18 @@
                     <span
                         class="mt-6 cursor-default inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-green-600 rounded-full">4.5
                         <i class="fa fa-star pl-2"></i></span>
-    
+
                     <div class="mt-2 cursor-default text-green-600 font-medium">
                         Extra ₹{{ $product->discount }} Off
                     </div>
-                    <span class=" text-3xl cursor-default font-semibold">₹{{ number_format($product->price - $product->discount) }}</span>
+                    <span
+                        class=" text-3xl cursor-default font-semibold">₹{{ number_format($product->price - $product->discount) }}</span>
                     <span class="text-lg px-2 text-gray-500 cursor-default">
                         <del>₹{{ number_format($product->price) }}</del>
                     </span>
                     <span
-                        class="text-lg text-green-600 font-semibold cursor-default">{{ ceil(($product->discount / $product->price) * 100) }}% off
+                        class="text-lg text-green-600 font-semibold cursor-default">{{ ceil(($product->discount / $product->price) * 100) }}%
+                        off
                     </span>
                     <!-- This example requires Tailwind CSS v2.0+ -->
                     <div class="bg-white overflow-hidden sm:rounded-lg  mt-6 cursor-default">
@@ -85,62 +87,70 @@
                         </div>
                     </div> --}}
                     <hr class="mb-6">
-                        <a href="" class="h-10 px-5 m-2 p-3 text-indigo-100 transition-colors duration-150 bg-orange-400 rounded-lg focus:shadow-outline hover:bg-orange-600 hover:text-black hover:font-bold">{{ __("Buy Now") }}</a>
-                    <a href="{{ route('cart.show',$product->id) }}" class="h-10 p-3 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-orange-600 rounded-lg focus:shadow-outline hover:bg-orange-800 hover:text-black hover:font-bold">{{ __("Add to cart") }}</a>
+                    <a href=""
+                        class="h-10 px-5 m-2 p-3 text-indigo-100 transition-colors duration-150 bg-orange-400 rounded-lg focus:shadow-outline hover:bg-orange-600 hover:text-black hover:font-bold">{{ __('Buy Now') }}</a>
+                    <a href="{{ route('cart.show', $product->id) }}"
+                        class="h-10 p-3 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-orange-600 rounded-lg focus:shadow-outline hover:bg-orange-800 hover:text-black hover:font-bold">{{ __('Add to cart') }}</a>
                 </div>
             </div>
         </div>
-    
+
     </div>
     <hr class="p-6 bg-white">
     {{-- Comment --}}
     <div class="bg-white">
-            <div class="lg:col-span-2 lg:border lg:border-gray-200 lg:pr-8 w-3/4 mx-auto ">
-                <div class="m-10">
-                    <section aria-labelledby="reviews-heading" class=" border-gray-200 pt-10 lg:pt-6 pb-6">
-                        <h2 id="reviews-heading" class="text-center m-2 font-bold">{{ __('Comment') }}</h2>
-                        <div class="space-y-10">
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
-                                    <h3 class="text-sm font-medium text-gray-900">This is the best white t-shirt out there</h3>
-                                    <p class="sr-only">5 out of 5 stars</p>
-                                    <div class="mt-3 space-y-6 text-sm text-gray-600">
-                                        <p>I've searched my entire life for a t-shirt that reflects every color in the visible
-                                            spectrum. Scientists said it couldn't be done, but when I look at this shirt, I see
-                                            white light bouncing right back into my eyes. Incredible!</p>
-                                    </div>
+        <div class="lg:col-span-2 lg:border lg:border-gray-200 lg:pr-8 w-3/4 mx-auto ">
+            <div class="m-10">
+                <section aria-labelledby="reviews-heading" class=" border-gray-200 pt-10 lg:pt-6 pb-6">
+                    <h2 id="reviews-heading" class="text-center m-2 font-bold">{{ __('Comment') }}</h2>
+                    <div class="space-y-10">
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
+                                <h3 class="text-sm font-medium text-gray-900">This is the best white t-shirt out there
+                                </h3>
+                                <p class="sr-only">5 out of 5 stars</p>
+                                <div class="mt-3 space-y-6 text-sm text-gray-600">
+                                    <p>I've searched my entire life for a t-shirt that reflects every color in the
+                                        visible
+                                        spectrum. Scientists said it couldn't be done, but when I look at this shirt, I
+                                        see
+                                        white light bouncing right back into my eyes. Incredible!</p>
                                 </div>
                             </div>
-            
-                            <hr>
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
-                                    <h3 class="text-sm font-medium text-gray-900">Adds the perfect variety to my wardrobe</h3>
-                                    <p class="sr-only">4 out of 5 stars</p>
-                                    <div class="mt-3 space-y-6 text-sm text-gray-600">
-                                        <p>I used to be one of those unbearable minimalists who only wore the same black v-necks
-                                            every day. Now, I have expanded my wardrobe with three new crewneck options! Leaving off
-                                            one star only because I wish the heather gray was more gray.</p>
-                                    </div>
+                        </div>
+
+                        <hr>
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
+                                <h3 class="text-sm font-medium text-gray-900">Adds the perfect variety to my wardrobe
+                                </h3>
+                                <p class="sr-only">4 out of 5 stars</p>
+                                <div class="mt-3 space-y-6 text-sm text-gray-600">
+                                    <p>I used to be one of those unbearable minimalists who only wore the same black
+                                        v-necks
+                                        every day. Now, I have expanded my wardrobe with three new crewneck options!
+                                        Leaving off
+                                        one star only because I wish the heather gray was more gray.</p>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="flex flex-col sm:flex-row">
-                                <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
-                                    <h3 class="text-sm font-medium text-gray-900">All good things come in 6-Packs</h3>
-                                    <p class="sr-only">5 out of 5 stars</p>
-                                    <div class="mt-3 space-y-6 text-sm text-gray-600">
-                                        <p>Tasty beverages, strong abs that will never be seen due to aforementioned tasty
-                                            beverages, and these Basic Tees!</p>
-                                    </div>
+                        </div>
+                        <hr>
+                        <div class="flex flex-col sm:flex-row">
+                            <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
+                                <h3 class="text-sm font-medium text-gray-900">All good things come in 6-Packs</h3>
+                                <p class="sr-only">5 out of 5 stars</p>
+                                <div class="mt-3 space-y-6 text-sm text-gray-600">
+                                    <p>Tasty beverages, strong abs that will never be seen due to aforementioned tasty
+                                        beverages, and these Basic Tees!</p>
                                 </div>
                             </div>
-                    </section>
-                </div>
+                        </div>
+                </section>
             </div>
         </div>
-</div>
-<hr class="my-6">
+    </div>
+    </div>
+    <hr class="my-6">
     {{-- Product List --}}
     <div class="bg-white">
         <div class="max-w-2xl mx-auto py-6 px-4 sm:py-6 sm:px-6 lg:max-w-7xl lg:px-2">
@@ -281,4 +291,28 @@
         </div>
     </div>
 
+    @section('script')
+        <script>
+            const imgs = document.querySelectorAll(".img-select a");
+            const imgBtns = [...imgs];
+            let imgId = 1;
+
+            imgBtns.forEach((imgItem) => {
+                imgItem.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    imgId = imgItem.dataset.id;
+                    slideImage();
+                });
+            });
+
+            function slideImage() {
+                const displayWidth = document.querySelector(".img-showcase img:first-child")
+                    .clientWidth;
+
+                document.querySelector(".img-showcase").style.transform = `translateX(${-(imgId - 1) * displayWidth }px)`;
+            }
+
+            window.addEventListener("resize", slideImage);
+        </script>
+    @endsection
 </x-app-layout>

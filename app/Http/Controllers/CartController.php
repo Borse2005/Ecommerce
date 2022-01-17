@@ -6,7 +6,6 @@ use App\Models\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session as FacadesSession;
 
 class CartController extends Controller
 {
@@ -17,7 +16,6 @@ class CartController extends Controller
      */
     public function index()
     {
-        
         $session = session()->getId();
         $cart = Cart::with('product')->get();
         $total = 0;
