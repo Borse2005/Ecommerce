@@ -1,6 +1,17 @@
 <x-app-layout>
     <div class="bg-white">
+            @if (session('cart'))
+            <div class=" time p-5">
+                <div class=" max-w-sm mx-auto  rounded-lg shadow-lg flex items-center space-x-4 "
+                    style="background-color: #5bc0de; padding: 10px">
+                    <div class="mx-auto">
+                        <div class="text-center font-bold">{{ session('cart') }}</div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="card-wrapper ">
+
             <div class="card">
                 <!-- card left -->
                 <div class="product-imgs">

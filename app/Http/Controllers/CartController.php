@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session as FacadesSession;
@@ -71,7 +70,19 @@ class CartController extends Controller
     public function show($id)
     {
         $session = FacadesSession::getId();
-        $cookie = Cookie::queue('cart', $session, time() + 84600);
+        // $cookie = Cookie::queue('cart', $session, time() + 84600);
+        $carts = Cart::get();
+        foreach ($carts as $value) {
+            if ($value->session == $session) {
+                $carted = Cart::where('product_id', $id)->get();
+                if (count($carted) != 0) {
+                    // dd($carted);
+                    session()->flash('cart', 'Already Added!');
+                    return redirect()->back();
+                }
+            }
+        }
+        
         $cart = new Cart();
         $cart->session = $session;
         $cart->product_id = $id;
@@ -79,8 +90,8 @@ class CartController extends Controller
             $cart->user_id = Auth::user()->id;
         }
         $cart->save();
-
-        return redirect()->route('back')->with('cart', 'Product added');
+        session()->flash('cart', 'Added this product in cart');
+        return redirect()->back();
     }
 
     /**

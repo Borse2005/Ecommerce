@@ -65,6 +65,9 @@
                                 @endif
                             @endforeach
                         </ul>
+                        <div class="mt-3 flex ">
+                            <button type="button" class="text-white ml-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Checkout & Place Order</button>
+                        </div>
                     </div>
                 </div>
 
