@@ -6,7 +6,7 @@
                     <div class="flow-root">
                         <ul role="list" class="-my-6 divide-y divide-gray-200">
                             @foreach ($cart as $product)
-                                @if ($session == $product->session)
+                                @if ($session == $product->session OR $product->user_id == $user)
                                     <li class="py-6 flex">
                                         <div
                                             class="flex-shrink-0 w-24 h-28 border border-gray-200 rounded-md overflow-hidden">

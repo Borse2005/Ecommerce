@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class CartController extends Controller
 {
@@ -16,21 +18,27 @@ class CartController extends Controller
      */
     public function index()
     {
-        $session = session()->getId();
+        $session = FacadesSession::getId();
         $cart = Cart::with('product')->get();
         $total = 0;
         $discount = 0;
         $count = 0;
         $key = 0;
+
+        if (Auth::check()) {
+            $user = Auth::user()->id;
+        }else{
+            $user = uniqid();
+        }
         foreach ($cart as  $value) {
-            if ($value->session == $session ) {
+            if ($value->session == $session OR $value->user_id ==  $user) {
                 $key ++;
                 $count += $value->id;
                 $total += ($value->product->price - $value->product->discount) * $value->qty;
                 $discount += $value->product->discount * $value->qty;
             }
         }
-        return view('cart', compact('session', 'cart', 'total', 'discount', 'key'));
+        return view('cart', compact('session', 'cart', 'total', 'discount', 'key', 'user'));
     }
 
     /**
@@ -62,7 +70,8 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $session = session()->getId();
+        $session = FacadesSession::getId();
+        $cookie = Cookie::queue('cart', $session, time() + 84600);
         $cart = new Cart();
         $cart->session = $session;
         $cart->product_id = $id;
