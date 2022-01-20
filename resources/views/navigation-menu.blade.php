@@ -102,7 +102,7 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3 relative">
+                <div class="ml-3 relative flex">
                     <span class="mx-1">
                         <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
                         <span>5</span>
