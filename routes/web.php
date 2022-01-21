@@ -29,6 +29,11 @@ Route::get('/', [DashboardController::class, 'index'])->name('index');
 Route::resource('/dash', DashboardController::class);
 Route::resource('/details', ProductDetailController::class);
 Route::resource('/cart', CartController::class);
+Route::resource('/user', UserController::class)->middleware('auth');
+
+Route::get('/checkout', function(){
+    return view('checkout');
+})->name('checkout')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     
@@ -42,7 +47,6 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
 
     Route::resource('/category', CategoryController::class)->except('destroy');
     Route::delete('/category/delete', [CategoryController::class, 'destroy'])->name('category_destroy');
-    Route::resource('/user', UserController::class);
     Route::resource('/product', ProductController::class)->except('destroy');
 
 });

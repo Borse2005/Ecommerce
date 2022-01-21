@@ -4,9 +4,9 @@
             <div class="flex flex-row ">
                 <div class="mt-8 mx-6 w-6/12 mt-5 my-6">
                     <div class="flow-root">
-                        <ul role="list" class="-my-6 divide-y divide-gray-200">
-                            @foreach ($cart as $product)
-                                @if ($session == $product->session OR $product->user_id == $user)
+                        @foreach ($cart as $product)
+                            @if ($session == $product->session or $product->user_id == $user)
+                                <ul role="list" class="-my-6 divide-y divide-gray-200">
                                     <li class="py-6 flex">
                                         <div
                                             class="flex-shrink-0 w-24 h-28 border border-gray-200 rounded-md overflow-hidden">
@@ -14,7 +14,6 @@
                                                 alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                                 class="w-full h-full object-center object-cover">
                                         </div>
-
                                         <div class="ml-4 flex-1 flex flex-col">
                                             <div>
                                                 <div class="flex justify-between text-base font-medium text-gray-900">
@@ -24,7 +23,7 @@
                                                         </a>
                                                     </h3>
                                                     <p class="ml-4 text-lg">
-                                                        ₹{{ number_format(($product->product->price - $product->product->discount)*$product->qty) }}
+                                                        ₹{{ number_format(($product->product->price - $product->product->discount) * $product->qty) }}
                                                     </p>
                                                 </div>
                                                 <div class="flex flex-1 text-base  font-medium text-gray-900">
@@ -33,21 +32,25 @@
                                                     </p>
                                                     <div class="ml-auto">
                                                         <del class="ml-4 text-slate-400 text-left">
-                                                            ₹{{ number_format(($product->product->discount)*$product->qty) }}
+                                                            ₹{{ number_format($product->product->discount * $product->qty) }}
                                                         </del>
                                                     </div>
                                                     <p class="ml-4 text-green-600">
-                                                        {{ number_format(($product->product->discount / $product->product->price )*100) }}%
+                                                        {{ number_format(($product->product->discount / $product->product->price) * 100) }}%
                                                         off
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="flex-1 flex items-end justify-between text-sm">
                                                 <div class="flex">
-                                                    <form action="{{ route('cart.update', $product->id) }}" method="post" id="pro">
+                                                    <form action="{{ route('cart.update', $product->id) }}"
+                                                        method="post" id="pro">
                                                         @csrf
                                                         @method("PUT")
-                                                        <input type="number" name="quantity" id="quantity" value="{{ $product->qty }}" min="1" class="w-20 h-9 rounded cursor-default da-num " onchange="this.form.submit();" onkeydown="return false">
+                                                        <input type="number" name="quantity" id="quantity"
+                                                            value="{{ $product->qty }}" min="1"
+                                                            class="w-20 h-9 rounded cursor-default da-num "
+                                                            onchange="this.form.submit();" onkeydown="return false">
                                                     </form>
                                                 </div>
                                                 <div class="flex">
@@ -62,11 +65,13 @@
                                             </div>
                                         </div>
                                     </li>
-                                @endif
-                            @endforeach
-                        </ul>
+                                </ul>
+                            @endif
+                        @endforeach
                         <div class="mt-3 flex ">
-                            <button type="button" class="text-white ml-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Checkout & Place Order</button>
+                            <a type="button" href="{{ route('user.create') }}"
+                                class="text-white ml-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Checkout
+                                & Place Order</a>
                         </div>
                     </div>
                 </div>

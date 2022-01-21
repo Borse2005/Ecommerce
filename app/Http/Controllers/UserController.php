@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -26,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        return view('checkout', compact('user'));
     }
 
     /**
@@ -59,7 +62,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        // return view('checkout');
     }
 
     /**
@@ -69,9 +72,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update (UserRequest $request, User $user)
     {
-        //
+        $validation = $request->validated();
+        $user->fill($validation);
+        $user->save();
+        session()->flash('details', 'Your details has been added');
+        return redirect()->back();
     }
 
     /**

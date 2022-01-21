@@ -76,7 +76,7 @@
                                     <dt class="text-sm font-medium text-gray-500">
                                         Highlight
                                     </dt>
-                                    <dd style="list-style: disc; margin-left: 150px">
+                                    <dd style="list-style: disc; margin-left: 150px; margin-top: -20px">
                                         {!! $product->highlight !!}
                                     </dd>
                                 </div>
