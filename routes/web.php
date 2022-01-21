@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
@@ -30,6 +31,7 @@ Route::resource('/dash', DashboardController::class);
 Route::resource('/details', ProductDetailController::class);
 Route::resource('/cart', CartController::class);
 Route::resource('/user', UserController::class)->middleware('auth');
+Route::get('/color/{id}', [DashboardController::class, 'color'])->name('color');
 
 Route::get('/checkout', function(){
     return view('checkout');
@@ -48,6 +50,8 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::resource('/category', CategoryController::class)->except('destroy');
     Route::delete('/category/delete', [CategoryController::class, 'destroy'])->name('category_destroy');
     Route::resource('/product', ProductController::class)->except('destroy');
+    Route::resource('/colors', ColorController::class)->except(['show', 'destroy']);
+    Route::delete('/colors/delete', [ColorController::class, 'destroy'])->name('colors.destroy');
 
 });
 

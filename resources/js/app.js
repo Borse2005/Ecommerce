@@ -135,3 +135,11 @@ jQuery(document).ready(function () {
         jQuery('#pro_id').val(value);
     });
 });
+
+jQuery(document).ready(function () {
+    jQuery(document).on('click', '#color_delete', function () {
+        var value = jQuery(this).val();
+        jQuery('#color').show();
+        jQuery('#color_id').val(value);
+    });
+});

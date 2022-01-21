@@ -54,7 +54,16 @@ class DashboardController extends Controller
     public function show($id)
     {
         $category = Category::with('product')->findOrFail($id);
-        return view('product', compact('category'));
+        $categories = Category::get();
+        return view('product', compact('category', 'categories'));
+    }
+
+
+    public function color($id)
+    {
+        $product = Product::findOrFail($id);
+        $color = Product::where('color', $product->color)->get();
+        dd($color);
     }
 
     /**
