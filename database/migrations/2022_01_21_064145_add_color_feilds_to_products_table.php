@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Color;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddExtraFeildToProductsTable extends Migration
+class AddColorFeildsToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +15,7 @@ class AddExtraFeildToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('thumbnail');
-            $table->text('description');
-            $table->bigInteger('price');
-            $table->bigInteger('discount');
-            $table->bigInteger('stock');
+            $table->foreignId('color_id')->constrained('colors');
         });
     }
 
@@ -30,7 +27,7 @@ class AddExtraFeildToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn(['thumbnail', 'description', 'price', 'discount', 'stock']);
+            $table->dropConstrainedForeignId('color_id');
         });
     }
 }

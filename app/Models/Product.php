@@ -41,6 +41,10 @@ class Product extends Model
         return $this->hasOne(Cart::class);
     }
 
+    public function color(){
+        return $this->belongsTo(Color::class);
+    }
+
     public static function boot(){
         parent::boot();
 

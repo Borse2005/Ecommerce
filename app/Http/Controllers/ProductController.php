@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Product as RequestsProduct;
+use App\Models\Color;
 use App\Models\Image;
 use App\Models\Product;
 use App\Rules\UploadCountLess;
@@ -31,7 +32,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $color = Color::all();
+        return view('product.create', compact('color'));
     }
 
     /**
@@ -51,11 +53,15 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'stock' => 'required|numeric',
-            'color' => 'required|min:2|max:20',
+            'color_id' => 'required',
             'image' => ['required', new UploadCountLess, new UploadCountMore],
             'highlight' => 'required|min:5',
             'specifications' => 'required|min:5',
-        ]);
+        ],
+        [
+            'color_id.required' => 'Color Feild is required'
+        ]
+    );
         
         if($request->hasFile('thumbnail')){
             $path = $request->file('thumbnail')->store('Thubnail');
@@ -70,7 +76,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->discount = $request->discount;
         $product->stock = $request->stock;
-        $product->color = $request->color;
+        $product->color_id = $request->color_id;
         $product->highlight = $request->highlight;
         $product->specifications = $request->specifications;
         $product->save();
@@ -80,7 +86,7 @@ class ProductController extends Controller
             foreach ($request->file('image') as $file) {
                 $name = $file->store('image');
                 $images[] = $name;
-                Image::insert( ['image'=> $name, 'product_id' => $product->id, 'category_id' => $product->category_id, 'subcategory_id' => $product->subcategory_id]);
+                Image::insert( ['image'=> $name, 'product_id' => $product->id, 'category_id' => $product->category_id, 'subcategory_id' => $product->subcategory_id, 'color_id' => $product->color_id]);
             }
         }
 

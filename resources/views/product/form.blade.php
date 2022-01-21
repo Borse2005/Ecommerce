@@ -60,11 +60,16 @@
             <div class="grid grid-cols-0 gap-6">
                 <div class="col-span-6 sm:col-span-3">
                     <label for="color" class="block text-sm font-medium text-gray-700">Color</label>
-                    <input type="text" name="color" id="color" autocomplete="color" value="{{ old('color',optional($products ?? null)->color)}}"
+                    <select type="text" name="color_id" id="color" autocomplete="color" value="{{ old('color_id',optional($products ?? null)->color_id)}}"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md @error('color') border-red-500 @enderror">
+                        <option selected disabled>Select Color</option>
+                        @foreach ($color as $colors)
+                            <option value="{{ $colors->id }}" {{ (old("color_id", optional($colors ?? null)->id) == $colors->id ? "selected":"") }}>{{ $colors->color }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
-            @error('color')
+            @error('color_id')
                 <div class="text-red-500 font-bold mt-2">
                     {{ $message }}
                 </div>

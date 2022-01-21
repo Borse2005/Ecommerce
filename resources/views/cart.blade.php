@@ -28,7 +28,7 @@
                                                 </div>
                                                 <div class="flex flex-1 text-base  font-medium text-gray-900">
                                                     <p class="mt-1 mb-3 text-sm text-gray-500">
-                                                        Color : {{ $product->product->color }}
+                                                        Color : {{ $product->product->color->color }}
                                                     </p>
                                                     <div class="ml-auto">
                                                         <del class="ml-4 text-slate-400 text-left">

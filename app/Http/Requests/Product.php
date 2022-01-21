@@ -31,9 +31,17 @@ class Product extends FormRequest
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
             'stock' => 'required|numeric',
-            'color' => 'required|min:2|max:20',
+            'color_id' => 'required',
             'highlight' => 'required|min:5',
             'specifications' => 'required|min:5',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'color_id.required' => 'Color is required',
+        ];
+    }
+
 }

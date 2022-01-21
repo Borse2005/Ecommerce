@@ -62,7 +62,7 @@
                                         Color
                                     </dt>
                                     <dd class="mt-1 text-sm font-semibold text-gray-900 sm:mt-0 sm:col-span-2">
-                                        {{ $product->color }}
+                                        {{ $product->color->color }}
                                     </dd>
                                 </div>
                             </dl>

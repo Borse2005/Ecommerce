@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\Session;
 use App\Models\User;
@@ -19,9 +20,10 @@ class DashboardController extends Controller
     {
         $category = Category::all();
         $product = Product::take(4)->get();
-        $user = User::all();
+        $user = User::get();
         $session = Session::all();
-        return view('dashboard', compact('category', 'product', 'user', 'session'));
+        $color = Color::all();
+        return view('dashboard', compact('category', 'product', 'user', 'session', 'color'));
     }
 
     /**

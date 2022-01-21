@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
             'address' => 'sometimes|required|min:10|max:150',
             'district' => 'sometimes|required|min:3|max:30',
             'state' => 'sometimes|required|min:3|max:30',
-            'pincode' => 'sometimes|required|min:5|max:5'
+            'pincode' => 'sometimes|required|digits:6'
         ]; 
     }
 }

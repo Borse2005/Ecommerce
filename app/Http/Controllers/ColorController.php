@@ -94,7 +94,7 @@ class ColorController extends Controller
     {
         $color = Color::findOrFail($request->color);
         $color->delete();
-
+        
         session()->flash('color', 'Color Deleted...');
         return redirect()->route('colors.index');
     }
