@@ -39,7 +39,7 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs  font-bolder text-center relative  uppercase tracking-wider">
-                                        {{ __('Mobile') }}
+                                        {{ __('User') }}
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         Action
@@ -48,7 +48,6 @@
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($user as $users)
-                                    @if ($users->role_id == 1)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap ">
                                                 <div class="flex items-center">
@@ -66,7 +65,7 @@
                                                 <div class="text-sm text-gray-900">{{ $users->email }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                                <div class="text-sm text-gray-900">+91 {{ $users->phone }}</div>
+                                                <div class="text-sm text-gray-900">{{ $users->role->role }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                                 <span class=" py-2 px-4 rounded">
@@ -75,7 +74,6 @@
                                                 </span>
                                             </td>
                                         </tr>
-                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

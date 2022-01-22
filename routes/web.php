@@ -28,6 +28,7 @@ Route::get('back', function () {
 
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 Route::resource('/dash', DashboardController::class);
+Route::post('/dashboard/{id}', [DashboardController::class, 'show'])->name('show.dash');
 Route::resource('/details', ProductDetailController::class);
 Route::resource('/cart', CartController::class);
 Route::resource('/user', UserController::class)->middleware('auth');

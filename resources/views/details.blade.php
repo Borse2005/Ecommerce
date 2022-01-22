@@ -83,23 +83,7 @@
                             </dl>
                         </div>
                     </div>
-                    {{-- <div class="bg-white overflow-hidden sm:rounded-lg">
-                        <div class="border-t border-gray-200">
-                            <dl>
-                                <div class="bg-white px-4 py-5 sm:grid  sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">
-                                        Specifications
-                                    </dt>
-                                    <dd style="margin-left: 140px">
-                                        {!! $product->specifications !!}
-                                    </dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </div> --}}
                     <hr class="mb-6">
-                    <a href=""
-                        class="h-10 px-5 m-2 p-3 text-indigo-100 transition-colors duration-150 bg-orange-400 rounded-lg focus:shadow-outline hover:bg-orange-600 hover:text-black hover:font-bold">{{ __('Buy Now') }}</a>
                     <a href="{{ route('cart.show', $product->id) }}"
                         class="h-10 p-3 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-orange-600 rounded-lg focus:shadow-outline hover:bg-orange-800 hover:text-black hover:font-bold">{{ __('Add to cart') }}</a>
                 </div>

@@ -73,7 +73,7 @@
                             @if ($user->district == null)
                                 {{ __("Empty") }}
                             @else
-                                Dist. {{ $user->district }}
+                                {{ $user->district }}
                             @endif
                         </dd>
                     </div>
@@ -85,7 +85,7 @@
                             @if ($user->state == null)
                                 {{ __("Empty") }}
                             @else
-                                Dist. {{ $user->state }}
+                                {{ $user->state }}
                             @endif
                         </dd>
                     </div>
@@ -97,7 +97,7 @@
                             @if ($user->pincode == null)
                             {{ __("Empty") }}
                         @else
-                            Dist. {{ $user->pincode }}
+                            {{ $user->pincode }}
                         @endif
                         </dd>
                     </div>

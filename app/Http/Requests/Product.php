@@ -24,7 +24,7 @@ class Product extends FormRequest
     public function rules()
     {
         return [
-            'product' => 'required|min:5|max:50',
+            'product' => 'required|min:5|max:500',
             'category_id' => 'required',
             'subcategory_id' => 'required|required_if:category_id,1',
             'description' => 'required|min:10|max:1000',

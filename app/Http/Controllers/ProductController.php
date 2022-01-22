@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $color = Color::all();
+        $color = Color::get();
         return view('product.create', compact('color'));
     }
 
@@ -45,7 +45,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-            'product' => 'required|min:5|max:50',
+            'product' => 'required|min:5|max:500',
             'category_id' => 'required',
             'subcategory_id' => 'required|required_if:category_id,1',
             'thumbnail' => 'required|max:2048|mimes:png,jpg,jpeg|dimensions:max_height:500,max_width:1000|image',
@@ -115,7 +115,9 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $products = Product::with('category', 'subcategory')->findOrFail($product->id);
-        return view('product.update', compact('products'));
+        $colored = Color::findOrFail($products->color_id);
+        $color = Color::get();
+        return view('product.update', compact('products', 'color', 'colored'));
     }
 
     /**

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::get();
+        $user = User::with('role')->get();
         $key = 1;
         return view('user.dashboard', compact('user','key'));
     }
@@ -77,7 +77,7 @@ class UserController extends Controller
         $validation = $request->validated();
         $user->fill($validation);
         $user->save();
-        session()->flash('details', 'Your details has been added');
+        session()->flash('details', 'Your details has been Updated!');
         return redirect()->back();
     }
 

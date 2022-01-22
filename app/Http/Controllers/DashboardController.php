@@ -29,7 +29,7 @@ class DashboardController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function create()
     {
@@ -53,19 +53,11 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $category = Category::with('product')->findOrFail($id);
-        $categories = Category::get();
-        return view('product', compact('category', 'categories'));
-    }
-
-
-    public function color($id)
-    {
-        $product = Product::findOrFail($id);
-        $color = Product::where('color', $product->color)->get();
-        dd($color);
+        $colors = Color::get();
+        return view('product', compact('category', 'colors'));
     }
 
     /**

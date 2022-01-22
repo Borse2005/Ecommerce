@@ -48,7 +48,7 @@
                                                         @csrf
                                                         @method("PUT")
                                                         <input type="number" name="quantity" id="quantity"
-                                                            value="{{ $product->qty }}" min="1"
+                                                            value="{{ $product->qty }}" min="1" max="{{ $product->product->stock }}"
                                                             class="w-20 h-9 rounded cursor-default da-num "
                                                             onchange="this.form.submit();" onkeydown="return false">
                                                     </form>
