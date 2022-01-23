@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Session;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {
@@ -18,11 +19,21 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        $product = Product::take(4)->get();
-        $user = User::get();
-        $session = Session::all();
-        $color = Color::all();
+        $category = Cache::remember('category', now()->minute(10), function(){
+            return Category::all();
+        });
+        $product = Cache::remember('product', now()->minutes(10), function(){
+            return Product::take(4)->get();
+        });
+        $user = Cache::remember('user', now()->minutes(10), function(){
+            return User::get();
+        });
+        $session = Cache::remember('session', now()->minutes(10), function(){
+            return Session::all();
+        });
+        $color = Cache::remember('color',now()->minutes(10), function(){
+            return Color::all();
+        });
         return view('dashboard', compact('category', 'product', 'user', 'session', 'color'));
     }
 

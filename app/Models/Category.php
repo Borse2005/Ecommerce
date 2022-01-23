@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Scopes\Category as ScopesCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
@@ -12,38 +13,49 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category'
+        'category',
     ];
 
-    public function subcategory(){
+    public function subcategory()
+    {
         return $this->hasMany(Subcategory::class);
     }
 
-    public function product(){
+    public function product()
+    {
         return $this->hasMany(Product::class);
     }
 
-    public function image(){
+    public function image()
+    {
         return $this->hasMany(Image::class);
     }
 
-    public static function boot(){
+    public static function boot()
+    {
 
         parent::boot();
 
-        Static::addGlobalScope(new ScopesCategory);
+        static::addGlobalScope(new ScopesCategory);
 
-        static::deleting(function(Category $category){
+        static::creating(function(){
+            Cache::forget('category');
+        });
+        static::updating(function(){
+            Cache::forget('category');
+        });
+        static::deleting(function (Category $category) {
             if (!empty($category->image)) {
                 foreach ($category->image as $key => $value) {
                     Storage::disk('public')->delete($value->image);
                 }
             }
-           
-           foreach ($category->product as $key => $value) {
-                Storage::disk('public')->delete($value->thumbnail);
-           }
 
+            foreach ($category->product as $key => $value) {
+                Storage::disk('public')->delete($value->thumbnail);
+            }
+
+            Cache::forget('category');
             $category->image()->delete();
             $category->product()->delete();
             $category->subcategory()->delete();

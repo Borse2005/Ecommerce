@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -16,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::with('role')->get();
+        $user = Cache::remember('user', now()->minutes(10), function(){
+            return User::with('role')->get();
+        });
         $key = 1;
         return view('user.dashboard', compact('user','key'));
     }

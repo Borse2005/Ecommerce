@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class Color extends Model
@@ -26,6 +27,14 @@ class Color extends Model
 
         parent::boot();
 
+        static::creating(function(Color $color){
+            Cache::forget('color');
+        });
+
+        static::updating(function(){
+            Cache::forget('color');
+        });
+
         static::deleting(function (Color $color)
         {
             foreach ($color->image as $key => $value) {
@@ -38,7 +47,7 @@ class Color extends Model
 
             $color->image()->delete();
             $color->product()->delete();
-
+            Cache::forget('color');
         });
     }
 }

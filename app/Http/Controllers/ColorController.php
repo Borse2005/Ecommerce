@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ColorRequest;
 use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ColorController extends Controller
 {
@@ -15,7 +16,9 @@ class ColorController extends Controller
      */
     public function index()
     {
-        $colors = Color::all();
+        $colors = Cache::remember('color', now()->addMinutes(10), function(){
+            return Color::all();
+        });
         $key = 1;
         return view('color.index', compact('colors', 'key'));
     }

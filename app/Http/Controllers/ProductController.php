@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Rules\UploadCountLess;
 use App\Rules\UploadCountMore;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -20,8 +21,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::with('category')->get();
-        $key = 1;
+        $product = Cache::remember('product', now()->minutes(10), function(){
+            return Product::with('category')->get();
+        });
+        $key = Cache::remember('key', now()->minutes(10), function(){
+            return 1;
+        });
         return view('product.dashboard', compact('product', 'key'));
     }
 

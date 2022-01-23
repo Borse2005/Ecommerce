@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Category as RequestsCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -15,8 +16,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::get();
-        $key = 1;
+        $category = Cache::remember('category', now()->minutes(10), function(){
+            return Category::get();
+        });
+        
+        $key = Cache::remember('key', now()->minutes(10), function(){
+            return 1;
+        });
         return view('category.dashboard', compact('category', 'key'));
     }
 
