@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\Address;
+use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,8 +34,9 @@ class UserController extends Controller
     public function create()
     {
         $user = Auth::user();
-        // $address = Address::all();
-        return view('checkout', compact('user'));
+        $cart = Cart::with('product')->get();
+        $session = session()->getId();
+        return view('checkout', compact('user', 'cart', 'session'));
     }
 
     /**

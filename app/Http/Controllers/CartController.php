@@ -119,7 +119,7 @@ class CartController extends Controller
             $cart->user_id = Auth::user()->id;
         }
         $cart->save();
-        return redirect()->route('cart.index');
+        return redirect()->back();
     }
 
     /**
