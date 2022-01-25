@@ -5570,6 +5570,11 @@ jQuery(document).ready(function () {
     jQuery('#color_id').val(value);
   });
 });
+jQuery(document).ready(function () {
+  jQuery('#add').click(function () {
+    jQuery('#adding').toggle("show");
+  });
+});
 
 /***/ }),
 
