@@ -17,7 +17,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $key = 1;
+        $order = Order::all();
+        return view('order.index', compact('key', 'order'));
     }
 
     /**
@@ -66,7 +68,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('order.details', compact('order'));
     }
 
     /**

@@ -12,4 +12,12 @@ class Order extends Model
     protected $fillable = [
         'address_id', 'product_id', 'payment_status', 'delivery_status', 'user_id','qty'
     ];
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
+    public function address(){
+        return $this->belongsTo(Address::class);
+    }
 }
