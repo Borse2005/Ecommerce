@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="">
         @guest
             @include('welcome')

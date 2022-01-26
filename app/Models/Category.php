@@ -41,9 +41,11 @@ class Category extends Model
         static::creating(function(){
             Cache::forget('category');
         });
+        
         static::updating(function(){
             Cache::forget('category');
         });
+
         static::deleting(function (Category $category) {
             if (!empty($category->image)) {
                 foreach ($category->image as $key => $value) {

@@ -5481,12 +5481,12 @@ jQuery(document).ready(function () {
 
 jQuery(document).ready(function () {
   jQuery('#plus').click(function () {
-    jQuery('#filter-section-0').show();
+    jQuery('#filter-section-0').toggle('slow');
     jQuery("#plus").hide();
     jQuery("#minus").show();
   });
   jQuery('#minus').click(function () {
-    jQuery('#filter-section-0').hide();
+    jQuery('#filter-section-0').toggle('slow');
     jQuery("#minus").hide();
     jQuery("#plus").show();
   });
@@ -5494,12 +5494,12 @@ jQuery(document).ready(function () {
 
 jQuery(document).ready(function () {
   jQuery('#catplus').click(function () {
-    jQuery('#filter-section-1').show();
+    jQuery('#filter-section-1').toggle('slow');
     jQuery("#catplus").hide();
     jQuery("#catminus").show();
   });
   jQuery('#catminus').click(function () {
-    jQuery('#filter-section-1').hide();
+    jQuery('#filter-section-1').toggle('slow');
     jQuery("#catminus").hide();
     jQuery("#catplus").show();
   });
