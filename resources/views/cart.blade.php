@@ -58,8 +58,7 @@
                                                         method="post">
                                                         @csrf
                                                         @method("DELETE")
-                                                        <input type="submit" value="Remove"
-                                                            class="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
+                                                        <input type="submit" value="Remove" class="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
                                                     </form>
                                                 </div>
                                             </div>
@@ -68,12 +67,10 @@
                                 </ul>
                             @endif
                         @endforeach
-                        <div class="mt-3 flex ">
-                            <a type="button" href="{{ route('user.create') }}"
-                                class="text-white ml-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Checkout
-                                & Place Order</a>
+                        <div class="mt-3 flex">
+                            <a type="button" href="{{ route('user.create') }}" class="text-white ml-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Checkout & Place Order</a>
                         </div>
-                    </div>
+                    </div> 
                 </div>
 
                 {{-- Left Side bar --}}
@@ -125,6 +122,5 @@
             </div>
         </div>
     </div>
-
 
 </x-app-layout>

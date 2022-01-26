@@ -37,7 +37,7 @@ class CartController extends Controller
                 $discount += $value->product->discount * $value->qty;
             }
         }
-        return view('cart', compact('session', 'cart', 'total', 'discount', 'key', 'user'));
+        return view('cart', compact('session', 'cart', 'total', 'discount', 'key', 'user',));
     }
 
     /**
