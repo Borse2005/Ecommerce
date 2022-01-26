@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Session;
 use App\Models\User;
@@ -34,7 +35,10 @@ class DashboardController extends Controller
         $color = Cache::remember('color',now()->minutes(10), function(){
             return Color::all();
         });
-        return view('dashboard', compact('category', 'product', 'user', 'session', 'color'));
+        $order = Cache::remember('order', now()->minute(10), function(){
+            return Order::all();
+        });
+        return view('dashboard', compact('category', 'product', 'user', 'session', 'color', 'order'));
     }
 
     /**

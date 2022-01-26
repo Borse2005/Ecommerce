@@ -107,16 +107,9 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative flex">
-                    <span class="mx-1">
-                        <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-                        <span>5</span>
-                    </span>
-                    <span>
-                        <i class="fa fa-heart"></i>
-                        <span>5</span>
-                    </span>
+                    
                     @guest
-                        
+                    
                         @if (Route::has('login'))
                             <a class=" px-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif
@@ -125,7 +118,14 @@
                             <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-
+                        @if (Auth::user()->role_id != 2)
+                        <span class="mx-2 mt-1">
+                            <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+                        </span>
+                        <span class="mt-1">
+                            <i class="fa fa-heart"></i>
+                        </span>
+                        @endif
                         <x-jet-dropdown align="right" width="48">
 
                             <x-slot name="trigger">

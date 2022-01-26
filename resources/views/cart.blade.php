@@ -67,13 +67,17 @@
                                 </ul>
                             @endif
                         @endforeach
+                        @if ($key != 0)
                         <div class="mt-3 flex">
                             <a type="button" href="{{ route('user.create') }}" class="text-white ml-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">Checkout & Place Order</a>
                         </div>
+                        @endif
+                        
                     </div> 
                 </div>
 
                 {{-- Left Side bar --}}
+                @if ($key != 0)
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg w-4/12 my-5 mx-auto">
                     <div class="px-4 py-5 sm:px-6">
                         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -118,9 +122,14 @@
                         </dl>
                     </div>
                 </div>
+                @endif
 
             </div>
         </div>
     </div>
-
+    @if ($key == 0)
+    <div class="text-center font-bold text-blue-900">
+        Your cart has been empty
+    </div>
+@endif
 </x-app-layout>
