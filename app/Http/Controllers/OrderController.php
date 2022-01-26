@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-use Illuminate\Http\Request;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -37,13 +38,20 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-      
-        foreach ($request->cart_id as $key => $value) {
+    //   dd($request->all());
+      $cart = Cart::find($request->cart_id);
+        foreach ($cart as $key => $value) {
             Order::create([
                 'address_id' => $request->address_id,
-                'cart_id' => $value,
+                'product_id' => $value->product_id,
+                'qty' => $value->qty,
                 'payment_status' => $request->payment_status,
+                'user_id' => Auth::user()->id,
             ]);
+        }
+
+        foreach ($cart as $key => $value) {
+            $value->delete();
         }
 
         session()->flash('order', "Order Palced...");
