@@ -131,6 +131,7 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         $cart->delete();
-        return redirect()->route('cart.index');
+        session()->flash('cart', 'Remove Product..');
+        return redirect()->back();
     }
 }

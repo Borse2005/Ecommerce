@@ -150,3 +150,13 @@ jQuery(document).ready(function() {
         jQuery('#adding').toggle("show");
     });
 });
+
+// Addresss remove 
+
+jQuery(document).ready(function() {
+    jQuery(document).on('click', '#address', function() {
+        var value = jQuery(this).val();
+        jQuery('#addresses').show();
+        jQuery('#address_id').val(value);
+    });
+});

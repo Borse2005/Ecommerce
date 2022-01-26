@@ -29,8 +29,8 @@ class StoreAddressRequest extends FormRequest
             'city' => 'required|string|min:3|max:30',
             'district' => 'required|string|min:3|max:30',
             'state' => 'required|string|min:3|max:30',
-            'phone' => 'required|integer|digits:10',
-            'alternate_phone' => 'required|integer|different:phone|digits:10',
+            'phone' => 'required|numeric|digits:10',
+            'alternate_phone' => 'required|numeric|different:phone|digits:10',
             'pincode' => 'required|integer|digits:6',
             'user_id' => 'required|integer',
         ];

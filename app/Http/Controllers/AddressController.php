@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use App\Http\Requests\StoreAddressRequest;
 use App\Http\Requests\UpdateAddressRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
@@ -26,7 +27,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('checkout.add');
     }
 
     /**
@@ -41,7 +42,7 @@ class AddressController extends Controller
         Address::create($validation);
 
         session()->flash('details', 'Details Saved...');
-        return redirect()->back();
+        return redirect()->route('user.create');
     }
 
     /**
@@ -64,7 +65,7 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
         $user = Auth::user();
-        return view('editcheckout', compact('address', 'user'));
+        return view('checkout.editcheckout', compact('address', 'user'));
     }
 
     /**
@@ -90,10 +91,11 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(Request $request)
     {
+        $address = Address::findOrFail($request->address);
         $address->delete();
-
+        
         session()->flash('details', 'Address Delete..');
         return redirect()->back();
     }

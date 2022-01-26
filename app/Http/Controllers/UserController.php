@@ -36,7 +36,7 @@ class UserController extends Controller
         $user = Auth::user();
         $cart = Cart::with('product')->get();
         $session = session()->getId();
-        return view('checkout', compact('user', 'cart', 'session'));
+        return view('checkout.checkout', compact('user', 'cart', 'session'));
     }
 
     /**

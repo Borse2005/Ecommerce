@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\SubcategoryController;
@@ -34,11 +35,10 @@ Route::post('/dashboard/{id}', [DashboardController::class, 'show'])->name('show
 Route::resource('/details', ProductDetailController::class);
 Route::resource('/cart', CartController::class);
 Route::resource('/user', UserController::class)->middleware('auth');
-Route::resource('/address', AddressController::class)->middleware('auth');
+Route::resource('/address', AddressController::class)->middleware('auth')->except('destroy');
+Route::delete('/address/delete', [AddressController::class, 'destroy'])->name('address.destroy');
+Route::resource('/order', OrderController::class)->middleware('auth');
 
-Route::get('/checkout', function(){
-    return view('checkout');
-})->name('checkout')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     
