@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Address;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Razorpay\Api\Api;
 
 class OrderController extends Controller
 {
@@ -40,7 +43,7 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-    //   dd($request->all());
+        
       $cart = Cart::find($request->cart_id);
         foreach ($cart as $key => $value) {
             Order::create([

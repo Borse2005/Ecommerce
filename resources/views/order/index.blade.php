@@ -80,7 +80,7 @@
                                 </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="p-2 text-center font-medium">Order not found</td>
+                                        <td colspan="6" class="p-2 text-center font-medium">Order not found</td>
                                     </tr>
                                 @endforelse
                             </tbody>

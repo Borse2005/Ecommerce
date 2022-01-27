@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Cache::remember('user', now()->minutes(10), function(){
+        $user = Cache::remember('user', 10, function(){
             return User::with('role')->get();
         });
         $key = 1;
@@ -36,7 +36,22 @@ class UserController extends Controller
         $user = Auth::user();
         $cart = Cart::with('product')->get();
         $session = session()->getId();
-        return view('checkout.checkout', compact('user', 'cart', 'session'));
+
+        $total = 0;
+        $discount = 0;
+        $count = 0;
+        $key = 0;
+        
+        foreach ($cart as  $value) {
+            if ($value->session == $session OR $value->user_id ==  $user) {
+                $key ++;
+                $count += $value->id;
+                $total += ($value->product->price - $value->product->discount) * $value->qty;
+                $discount += $value->product->discount * $value->qty;
+            }
+        }
+        $price = ($total). '00';
+        return view('checkout.checkout', compact('user', 'cart', 'session', 'price'));
     }
 
     /**

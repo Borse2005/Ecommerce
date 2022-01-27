@@ -20,7 +20,6 @@
     @endif
 
     {{-- Product --}}
-
     <div class="w-3/4  mx-auto mt-3">
         <div class="mt-10 sm:mt-0">
             <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -133,10 +132,10 @@
                                 @foreach ($user->address as $address)
                                     <div class="col-span-6 sm:col-span-3">
                                         <div class="flex">
-                                            <input id="remember-me" name="address_id" type="radio"
-                                                value="{{ $address->id }}"
+                                            <input id="addresses" name="address_id" type="radio"
+                                                value="{{ $address->id }}" checked
                                                 class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mt-3">
-                                            <label class="ml-4 block text-sm text-gray-900">
+                                            <label id="addresses" class="ml-4 block text-sm text-gray-900">
                                                 <span class="font-semibold">{{ $address->name }} <span
                                                         class="ml-5">{{ $address->phone }}</span></span>
                                                 <br>
@@ -196,10 +195,10 @@
                             <div class="px-4 py-5 bg-white sm:p-6">
                                 <div class="grid grid-cols-3 gap-6">
                                     <div class="flex items-center">
-                                        <input id="remember-me" name="payment_status" type="radio"
+                                        <input id="cash" name="payment_status" type="radio"
                                             value="{{ __('1') }}"
                                             class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+                                        <label for="cash" class="ml-2 block text-sm text-gray-900">
                                             Cash on delivery
                                         </label>
                                     </div>
@@ -207,18 +206,11 @@
                                     <div class="flex items-center">
                                         <input id="remember-me" name="payment_status" type="radio"
                                             value="{{ __('2') }}"
-                                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                                            Net Banking
-                                        </label>
-                                    </div>
-
-                                    <div class="flex items-center">
-                                        <input id="remember-me" name="payment_status" type="radio"
-                                            value="{{ __('3') }}"
-                                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                                            UPI
+                                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                                            onclick="jQuery('#rzp-button1').click()" id="btn">
+                                        <label for="remember-me" class="ml-2 block text-sm text-gray-900"
+                                            onclick="jQuery('#rzp-button1').click()" id="btn" >
+                                            Online Banking
                                         </label>
                                     </div>
                                 </div>
@@ -228,7 +220,9 @@
                                 <input type="hidden" name="cart_id[]" value="{{ $product->id }}">
                             @endforeach
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <input type="submit" value="Place Order" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="jQuery('#order').submit()">
+                                <input type="submit" value="Place Order"
+                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    onclick="jQuery('#order').submit()">
                             </div>
                         </div>
                     </div>
@@ -236,4 +230,53 @@
             </div>
         </div>
     </form>
+
+    <div class="w-6/12 mt-5 mx-auto">
+        <div class="md:grid md:grid-cols-1 md:gap-6">
+            <div class="mt-5 md:mt-0 md:col-span-2">
+                <button id="rzp-button1"></button>
+                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                <script>
+                var options = {
+                    "key": "{{ env('RAZOR_KEY') }}", // Enter the Key ID generated from the Dashboard
+                    "amount": "{{ $price }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "Acme Corp",
+                    "description": "Test Transaction",
+                    "image": "https://example.com/your_logo",
+                    "handler": function (response){
+                        alert(response.razorpay_payment_id);
+                        alert('Order Placed');
+                        jQuery('#order').submit();
+                    },
+                    "prefill": {
+                        "name": "{{ Auth::user()->name }}",
+                        "email": "{{ Auth::user()->email }}",
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function (response){
+                        alert(response.error.code);
+                        alert(response.error.description);
+                        alert(response.error.source);
+                        alert(response.error.step);
+                        alert(response.error.reason);
+                        alert(response.error.metadata.order_id);
+                        alert(response.error.metadata.payment_id);
+                });
+                document.getElementById('rzp-button1').onclick = function(e){
+                    rzp1.open();
+                    e.preventDefault();
+                }
+                </script>
+            </div>
+        </div>
+    </div>
+
 </x-app-layout>
