@@ -107,9 +107,14 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative flex">
-                    
+
                     @guest
-                    
+                        <span class="mx-2 mt-1">
+                            <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+                        </span>
+                        <span class="mt-1">
+                            <i class="fa fa-heart"></i>
+                        </span>
                         @if (Route::has('login'))
                             <a class=" px-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif
@@ -118,13 +123,13 @@
                             <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                        @if (Auth::user()->role_id != 2)
-                        <span class="mx-2 mt-1">
-                            <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
-                        </span>
-                        <span class="mt-1">
-                            <i class="fa fa-heart"></i>
-                        </span>
+                        @if (Auth::user()->role_id == 1)
+                            <span class="mx-2 mt-1">
+                                <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+                            </span>
+                            <span class="mt-1">
+                                <i class="fa fa-heart"></i>
+                            </span>
                         @endif
                         <x-jet-dropdown align="right" width="48">
 
@@ -137,7 +142,7 @@
                                             alt="{{ Auth::user()->name }}" />
                                     </button>
                                 @else
-                                
+
                                     <span class="inline-flex rounded-md">
                                         <button type="button"
                                             class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
@@ -145,11 +150,12 @@
 
                                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                <path fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </button>
-                                        
+
                                     </span>
                                 @endif
                             </x-slot>
@@ -177,7 +183,7 @@
                                     @csrf
 
                                     <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
+                                                                    this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-dropdown-link>
                                 </form>
@@ -257,7 +263,7 @@
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                    this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>
