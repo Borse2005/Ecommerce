@@ -17,7 +17,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+        // 
     }
 
     /**

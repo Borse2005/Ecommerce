@@ -43,6 +43,7 @@ Route::resource('/order', OrderController::class)->middleware('auth');
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     
     Route::get('/subcategory/show/{subcategory}',[SubcategoryController::class, 'show'])->name('subcategory.show');
+    Route::get('/subcategory/index',[SubcategoryController::class, 'index'])->name('subcategory.index');
     Route::post('/subcategory/store/',[SubcategoryController::class, 'store'])->name('subcategory.store');
     Route::put('/subcategory/{subcategory}',[SubcategoryController::class, 'update'])->name('subcategory.update');
     Route::get('/subcategory/{subcategory}',[SubcategoryController::class, 'edit'])->name('subcategory.edit');

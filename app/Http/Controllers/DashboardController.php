@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Session;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -125,7 +126,13 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::with('product')->FindOrFail($id);
+        if($request->has('download')){  
+            $pdf = PDF::loadView('pdf.index', compact('order'));  
+            return $pdf->download('pdfview.pdf');  
+        }  
+
+        return redirect()->route('order.show', $id);  
     }
 
     /**

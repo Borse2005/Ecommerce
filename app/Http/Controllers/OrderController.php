@@ -94,7 +94,7 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        dd($order);
     }
 
     /**
