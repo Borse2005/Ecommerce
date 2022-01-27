@@ -86,19 +86,13 @@ class DashboardController extends Controller
             $key = $request->high;
             $cat = null;
 
-        } elseif ($request->color) {
+        } elseif ($request->category) {
 
-            $category = Category::with(['product' => function ($query) use ($request) {
-                $query->where('color_id', '=', $request->color)->get();
-            }], 'subcategory')->findOrFail($id);
-
-            if ($request->category) {
                 $category = Category::with(['product' => function ($query) use ($request) {
                     $query->where('subcategory_id', '=', $request->category)->get();
                 }], 'subcategory')->findOrFail($id);
-            }
             $cat = $request->category;
-            $key = $request->color;
+            $key = null;
 
         } else {
 
