@@ -6,8 +6,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderHistory;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,7 @@ Route::resource('/user', UserController::class)->middleware('auth');
 Route::resource('/address', AddressController::class)->middleware('auth')->except('destroy');
 Route::delete('/address/delete', [AddressController::class, 'destroy'])->name('address.destroy');
 Route::resource('/order', OrderController::class)->middleware('auth');
+Route::resource('history', OrderHistory::class)->middleware('auth');
 
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
