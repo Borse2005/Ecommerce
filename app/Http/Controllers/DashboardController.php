@@ -129,7 +129,7 @@ class DashboardController extends Controller
         $order = Order::with('product')->FindOrFail($id);
         if($request->has('download')){  
             $pdf = PDF::loadView('pdf.index', compact('order'));  
-            return $pdf->download('pdfview.pdf');  
+            return $pdf->download('Order.pdf');  
         }  
 
         return redirect()->route('order.show', $id);  

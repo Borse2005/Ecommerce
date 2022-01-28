@@ -161,7 +161,7 @@
                                             @csrf
                                             @method("PUT")
                                             <input type="hidden" name="download">
-                                            <input type="submit" value="Download">
+                                            <input type="submit" value="Download" class="cursor-pointer">
                                         </form>
                                     </div>
                                 </li>
