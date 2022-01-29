@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\AdminOrderEvent;
 use App\Events\OrderPlacedEvent;
+use App\Listeners\AdminOrderListener;
 use App\Listeners\OrderPlacedListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         OrderPlacedEvent::class => [
             OrderPlacedListener::class
+        ],
+        AdminOrderEvent::class => [
+            AdminOrderListener::class
         ],
     ];
 

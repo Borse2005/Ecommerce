@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AdminOrderEvent;
 use App\Events\OrderPlacedEvent;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
@@ -9,6 +10,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Razorpay\Api\Api;
 
@@ -59,7 +61,12 @@ class OrderController extends Controller
         foreach ($cart as $key => $value) {
             $value->delete();
         }
-
+        $user = User::all();
+        foreach ($user as $key => $value) {
+            if ($value->role_id == 2) {
+                event(new AdminOrderEvent($value));
+            }
+        }
         event(new OrderPlacedEvent(Auth::user()));
         session()->flash('order', "Order Palced...");
         return redirect()->route('dash.index');
