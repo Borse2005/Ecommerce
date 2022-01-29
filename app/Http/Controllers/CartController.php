@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -23,6 +24,8 @@ class CartController extends Controller
         $discount = 0;
         $count = 0;
         $key = 0;
+        $zero = 1;
+        $stock[] = 1;
 
         if (Auth::check()) {
             $user = Auth::user()->id;
@@ -36,8 +39,15 @@ class CartController extends Controller
                 $total += ($value->product->price - $value->product->discount) * $value->qty;
                 $discount += $value->product->discount * $value->qty;
             }
+            $stock[] = $value->product->stock;
         }
-        return view('cart', compact('session', 'cart', 'total', 'discount', 'key', 'user',));
+        
+        foreach($stock as  $value){
+            if ($value == 0) {
+                $zero = 0;
+            }
+        }
+        return view('cart', compact('session', 'cart', 'total', 'discount', 'key', 'user', 'zero'));
     }
 
     /**

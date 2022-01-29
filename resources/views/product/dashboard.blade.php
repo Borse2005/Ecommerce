@@ -40,6 +40,10 @@
                                         class="px-6 py-3 text-left text-xs   font-bolder relative  uppercase tracking-wider">
                                         Category
                                     </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-center text-xs   font-bolder relative  uppercase tracking-wider">
+                                        Stock
+                                    </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         Action
                                     </th>
@@ -62,6 +66,9 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-left">
                                         <a href="" class="text-indigo-600 hover:text-indigo-900 text-left">{{ $products->category->category }}</a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-left">
+                                        <div class="text-sm text-center text-gray-900">{{ $products->stock }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">

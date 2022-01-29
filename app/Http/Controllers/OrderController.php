@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Events\AdminOrderEvent;
 use App\Events\OrderPlacedEvent;
 use App\Events\OrderUpdateEvent;
-use App\Models\Order;
+use App\Events\OutOfStockEvent;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Cart;
 use App\Models\DeliveryStatus;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,8 +48,9 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        
-      $cart = Cart::find($request->cart_id);
+        $user = User::all();
+        $stock = 0;
+        $cart = Cart::find($request->cart_id);
         foreach ($cart as $key => $value) {
             Order::create([
                 'address_id' => $request->address_id,
@@ -56,17 +59,34 @@ class OrderController extends Controller
                 'payment_status' => $request->payment_status,
                 'user_id' => Auth::user()->id,
             ]);
+            $product = Product::findOrFail($value->product_id);
+            $product->stock = $product->stock - $value->qty;
+            $product->save();
+
+            if ($product->stock == 0) {
+                $stock = $product->id;
+            }
+        }
+
+        if ($stock != 0) {
+            $producted = Product::findOrFail($stock);
+            foreach ($user as $users) {
+                if ($users->role_id == 2) {
+                    event(new OutOfStockEvent($users, $producted));
+                }
+            }
         }
 
         foreach ($cart as $key => $value) {
             $value->delete();
         }
-        $user = User::all();
+
         foreach ($user as $key => $value) {
             if ($value->role_id == 2) {
                 event(new AdminOrderEvent($value));
             }
         }
+
         event(new OrderPlacedEvent(Auth::user()));
         session()->flash('order', "Order Palced...");
         return redirect()->route('dash.index');
