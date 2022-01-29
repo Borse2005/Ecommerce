@@ -38,19 +38,23 @@ class Category extends Model
 
         static::addGlobalScope(new ScopesCategory);
 
-        static::creating(function(){
+        static::creating(function () {
             Cache::forget('category');
         });
-        
-        static::updating(function(){
+
+        static::updating(function () {
             Cache::forget('category');
         });
 
         static::deleting(function (Category $category) {
-            if (!empty($category->image)) {
-                foreach ($category->image as $key => $value) {
-                    Storage::disk('public')->delete($value->image);
+
+            foreach ($category->product as $key => $value) {
+                foreach ($value->order as  $values) {
+                    $value->delete();
                 }
+            }
+            foreach ($category->image as $key => $value) {
+                Storage::disk('public')->delete($value->image);
             }
 
             foreach ($category->product as $key => $value) {
@@ -58,6 +62,7 @@ class Category extends Model
             }
 
             Cache::forget('category');
+
             $category->image()->delete();
             $category->product()->delete();
             $category->subcategory()->delete();

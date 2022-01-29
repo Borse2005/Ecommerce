@@ -50,6 +50,10 @@ class Product extends Model
         return $this->belongsTo(Color::class);
     }
 
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -68,6 +72,7 @@ class Product extends Model
             }
             $product->image()->delete();
             $product->cart()->delete();
+            $product->order()->delete();
             Cache::forget('product');
         });
     }

@@ -42,6 +42,9 @@ class Color extends Model
             }
 
             foreach ($color->product as $key => $value) {
+                foreach ($value->order as $values) {
+                    $value->delete();
+                }
                 Storage::disk('public')->delete($value->thumbnail);
             }
 

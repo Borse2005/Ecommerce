@@ -38,19 +38,19 @@
                                         ID
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs  font-bolder  uppercase tracking-wider">
+                                        class="px-6 py-3 text-xs text-center font-bolder  uppercase tracking-wider">
                                         Product Name
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs   font-bolder relative  uppercase tracking-wider">
+                                        class="px-6 py-3 text-xs text-center  font-bolder relative  uppercase tracking-wider">
                                         Quantity
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs   font-bolder relative  uppercase tracking-wider">
+                                        class="px-6 py-3 text-xs text-center  font-bolder relative  uppercase tracking-wider">
                                         Customer
                                     </th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-left text-xs   font-bolder relative  uppercase tracking-wider">
+                                        class="px-6 py-3 text-xs text-center  font-bolder relative  uppercase tracking-wider">
                                         Order Status
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">

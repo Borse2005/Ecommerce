@@ -58,10 +58,10 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-center text-gray-900">{{ substr($products->product, 0, 50) }}</div>
+                                        <div class="text-sm text-left text-gray-900">{{ substr($products->product, 0, 50) }}</div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                                        <a href="" class="text-indigo-600 hover:text-indigo-900 text-center">{{ $products->category->category }}</a>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-left">
+                                        <a href="" class="text-indigo-600 hover:text-indigo-900 text-left">{{ $products->category->category }}</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">

@@ -12,7 +12,7 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto  sm:px-6 lg:px-8">
             <div class="flex flex-col">
-                {{-- Error  --}}
+                {{-- Error --}}
                 @if (session('color'))
                     <div class="mb-6 time">
                         <div class=" max-w-sm mx-auto  rounded-lg shadow-lg flex items-center space-x-4 "
@@ -41,7 +41,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            @foreach ($colors as $color)
+                            @forelse ($colors as $color)
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -60,12 +60,22 @@
                                         <span class=" py-2 px-4 rounded">
                                             <a href="{{ route('colors.edit', $color->id) }}"
                                                 class="text-indigo-600 hover:text-indigo-900 ">{{ __('Edit') }}</a>
-                                            <button type="button" class="text-indigo-600 hover:text-indigo-900 font-600 px-2 font-semibold" value="{{ $color->id }}" id="color_delete">Delete</button>
+                                            <button type="button"
+                                                class="text-indigo-600 hover:text-indigo-900 font-600 px-2 font-semibold"
+                                                value="{{ $color->id }}" id="color_delete">Delete</button>
                                         </span>
                                     </td>
                                 </tr>
-                        </tbody>
-                            @endforeach
+                            </tbody>
+                            @empty
+                                <tbody>
+                                    <tr class="bg-white">
+                                        <td class="px-6 py-4 whitespace-nowrap" colspan="3">
+                                            <div class="text-gray-900 text-center text-lg font-bold">Color not found..</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            @endforelse 
                         </table>
                     </div>
                 </div>

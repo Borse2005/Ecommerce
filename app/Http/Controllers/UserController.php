@@ -43,7 +43,7 @@ class UserController extends Controller
         $key = 0;
         
         foreach ($cart as  $value) {
-            if ($value->session == $session OR $value->user_id ==  $user) {
+            if ($value->session == $session OR $value->user_id ==  $user->id) {
                 $key ++;
                 $count += $value->id;
                 $total += ($value->product->price - $value->product->discount) * $value->qty;
