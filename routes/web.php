@@ -39,7 +39,7 @@ Route::resource('/cart', CartController::class);
 Route::resource('/user', UserController::class)->middleware('auth');
 Route::resource('/address', AddressController::class)->middleware('auth')->except('destroy');
 Route::delete('/address/delete', [AddressController::class, 'destroy'])->name('address.destroy');
-Route::resource('/order', OrderController::class)->middleware('auth');
+Route::resource('/order', OrderController::class);
 Route::resource('history', OrderHistory::class)->middleware('auth');
 
 
@@ -48,10 +48,10 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     Route::get('/subcategory/show/{subcategory}',[SubcategoryController::class, 'show'])->name('subcategory.show');
     Route::get('/subcategory/index',[SubcategoryController::class, 'index'])->name('subcategory.index');
     Route::post('/subcategory/store/',[SubcategoryController::class, 'store'])->name('subcategory.store');
-    Route::put('/subcategory/{subcategory}',[SubcategoryController::class, 'update'])->name('subcategory.update');
-    Route::get('/subcategory/{subcategory}',[SubcategoryController::class, 'edit'])->name('subcategory.edit');
-    Route::get('/subcategory/create/{id}',[ SubcategoryController::class, 'create' ])->name('subcategory.create');
-    Route::delete('/subcategory/destroy',[ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
+    Route::put('/subcategory/{subcategory}', [SubcategoryController::class, 'update'])->name('subcategory.update');
+    Route::get('/subcategory/{subcategory}', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
+    Route::get('/subcategory/create/{id}', [ SubcategoryController::class, 'create' ])->name('subcategory.create');
+    Route::delete('/subcategory/destroy', [ SubcategoryController::class, 'destroy' ])->name('subcategory.destroy');
     Route::delete('/products/delete', [ProductController::class, 'destroy'])->name('products.delete');
 
     Route::resource('/category', CategoryController::class)->except('destroy');

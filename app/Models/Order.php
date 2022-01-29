@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'address_id', 'product_id', 'payment_status', 'delivery_status', 'user_id','qty'
+        'address_id', 'product_id', 'payment_status', 'delivery_status', 'user_id','qty', 'status_id'
     ];
 
     public function product(){
@@ -19,5 +19,9 @@ class Order extends Model
 
     public function address(){
         return $this->belongsTo(Address::class);
+    }
+
+    public function status(){
+        return $this->belongsTo(DeliveryStatus::class);
     }
 }

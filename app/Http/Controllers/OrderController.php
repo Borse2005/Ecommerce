@@ -7,12 +7,10 @@ use App\Events\OrderPlacedEvent;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-use App\Models\Address;
 use App\Models\Cart;
-use App\Models\Product;
+use App\Models\DeliveryStatus;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Razorpay\Api\Api;
 
 class OrderController extends Controller
 {
@@ -25,7 +23,8 @@ class OrderController extends Controller
     {
         $key = 1;
         $order = Order::all();
-        return view('order.index', compact('key', 'order'));
+        $status = DeliveryStatus::all();
+        return view('order.index', compact('key', 'order', 'status'));
     }
 
     /**
@@ -80,7 +79,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('order.details', compact('order'));
+        $status = DeliveryStatus::all();
+        return view('order.details', compact('order', 'status'));
     }
 
     /**
@@ -103,7 +103,12 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        dd($order);
+        $validation = $request->validated();
+        $order->fill($validation);
+        $order->save();
+
+        session()->flash('order', 'Order updated');
+        return redirect()->back();
     }
 
     /**

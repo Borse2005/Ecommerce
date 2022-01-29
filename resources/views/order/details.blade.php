@@ -113,7 +113,16 @@
                             {{ __('Order Status') }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $order->delivery_status }}
+                            <form action="{{ route('order.update',$order->id) }}" method="POST">
+                                @csrf
+                                @method("PUT")
+                                <select id="status" name="status_id" autocomplete="country-name" class="mt-1 block w-36  py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onchange="this.form.submit()">
+                                    <option>Change  Status</option>
+                                    @foreach ($status as $value)
+                                        <option value="{{ $value->id }}" {{ old('status_id', optional($order ?? null)->status_id) == $value->id ? "selected" : ""  }} >{{ $value->status }}</option>
+                                    @endforeach
+                                  </select>
+                            </form>
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

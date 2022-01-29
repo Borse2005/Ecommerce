@@ -4,6 +4,16 @@
             {{ __('Orders') }}
         </h2>
     </x-slot>
+    @if (session('order'))
+    <div class="mb-6 time">
+        <div class=" max-w-sm mx-auto  rounded-lg shadow-lg flex items-center space-x-4 "
+            style="background-color: #5bc0de; padding: 10px">
+            <div class="mx-auto">
+                <div class="text-center font-bold">{{ session('order') }}</div>
+            </div>
+        </div>
+    </div>
+@endif
     <div class="py-8">
         <div class="max-w-7xl mx-auto  sm:px-6 lg:px-8">
             <div class="flex flex-col">
@@ -70,7 +80,16 @@
                                         <a href="" class="text-indigo-600 hover:text-indigo-900 text-center">{{ $orders->address->name }}</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                                        <a href="" class="text-indigo-600 hover:text-indigo-900 text-center">{{ $orders->delivery_status }}</a>
+                                        <form action="{{ route('order.update',$orders->id) }}" method="POST">
+                                            @csrf
+                                            @method("PUT")
+                                            <select id="status" name="status_id" autocomplete="country-name" class="mt-1 block w-36 mx-auto  py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" onchange="this.form.submit()">
+                                                <option>Change  Status</option>
+                                                @foreach ($status as $value)
+                                                    <option value="{{ $value->id }}" {{ old('status_id', optional($orders ?? null)->status_id) == $value->id ? "selected" : ""  }} >{{ $value->status }}</option>
+                                                @endforeach
+                                              </select>
+                                        </form>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
                                         <span class=" py-2 px-4 rounded">
