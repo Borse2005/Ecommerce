@@ -11,6 +11,7 @@ use App\Models\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -19,14 +20,22 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request);
         $category = Cache::remember('category', now()->minute(10), function () {
             return Category::all();
         });
-        $product = Cache::remember('product', now()->minutes(10), function () {
-            return Product::take(4)->get();
-        });
+        if ($request->category) {
+            $product = Cache::remember('product', now()->minutes(10), function () use($request) {
+                return DB::table('products')->where('category_id', '=', $request->category)->take(4)->get();
+            });
+            // dd($product);
+        }else{
+            $product = Cache::remember('product', now()->minutes(10), function () {
+                return Product::take(4)->get();
+            });
+        }
         $user = Cache::remember('user', now()->minutes(10), function () {
             return User::get();
         });

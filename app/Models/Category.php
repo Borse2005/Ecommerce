@@ -31,6 +31,10 @@ class Category extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function producted(){
+        return $this->hasMany(Product::class)->take(4);
+    }
+
     public static function boot()
     {
 

@@ -6,36 +6,37 @@
                 fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                 <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
-          
-           <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
-            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                <div class="sm:text-center lg:text-left">
-                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                        <span class="block xl:inline">Data to enrich your</span>
-                        <span class="block text-indigo-600 xl:inline">online business</span>
-                    </h1>
-                    <p
-                        class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit
-                        sunt amet fugiat veniam occaecat fugiat aliqua.
-                    </p>
-                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                        <div class="rounded-md shadow">
-                            <a href="#"
-                                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                                Get started
-                            </a>
-                        </div>
-                        <div class="mt-3 sm:mt-0 sm:ml-3">
-                            <a href="#"
-                                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
-                                Live demo
-                            </a>
+
+            <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                            <span class="block xl:inline">Data to enrich your</span>
+                            <span class="block text-indigo-600 xl:inline">online business</span>
+                        </h1>
+                        <p
+                            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+                            Elit
+                            sunt amet fugiat veniam occaecat fugiat aliqua.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#"
+                                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Get started
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#"
+                                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                                    Live demo
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </main>
-           </div>
+                </main>
+            </div>
         </div>
     </div>
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
@@ -143,7 +144,8 @@
 <hr>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="bg-white">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:justify-center lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <div
+        class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:justify-center lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             <span class="block">Ready to dive in?</span>
             <span class="block text-indigo-600">Start your free trial today.</span>
@@ -151,13 +153,13 @@
         <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div class="inline-flex rounded-md shadow">
                 <a href="#"
-                    class="px-2 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                    class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                     Get started
                 </a>
             </div>
             <div class="ml-3 inline-flex rounded-md shadow">
                 <a href="#"
-                    class="px-2 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
+                    class=" inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50">
                     Learn more
                 </a>
             </div>
@@ -167,22 +169,37 @@
 
 <hr>
 <div class="bg-white">
+
+    <div class="text-center flex">
+        <div class="mx-auto mt-5">
+            <form action="{{ route('dash.index') }}" method="get">
+                @csrf
+                @foreach ($category as $categories)
+                <button type="submit" value="{{ $categories->id }}" name="category" class="px-3 font-semibold">{{ $categories->category }}</button>
+            @endforeach
+            </form>
+        </div>
+    </div>
+
     <div class="max-w-2xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-6">
-        <h2 class="py-6 px-2 font-bold">{{ __("Latest Product") }}</h2>
 
         <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             @forelse ($product as $products)
-            <a href="{{ route('dash.show',$products->category_id) }}" class="group">
-                <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                    <img src="{{ Storage::disk('public')->url($products->thumbnail) }}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."   class="w-full h-full object-center object-cover group-hover:opacity-75" style="height: 300px">
-                </div>
-                <h3 class="mt-4 text-sm text-gray-700">
-                    Earthen Bottle
-                </h3>
-                <p class="mt-1 text-lg font-medium text-gray-900">
-                    $48
-                </p>
-            </a>
+                <a href="{{ route('dash.show', $products->category_id) }}" class="group">
+                    <div
+                        class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                        <img src="{{ Storage::disk('public')->url($products->thumbnail) }}"
+                            alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                            class="w-full h-full object-center object-cover group-hover:opacity-75"
+                            style="height: 300px">
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700">
+                        Earthen Bottle
+                    </h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900">
+                        $48
+                    </p>
+                </a>
             @empty
                 <div>
                     <h3 class="text-center mx-auto">Product not found</h3>
@@ -196,7 +213,7 @@
 
 <div class="bg-white">
     <div class="max-w-2xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-6">
-        <h2 class="py-6 px-2 font-bold">{{ __("Extra Product") }}</h2>
+        <h2 class="py-6 px-2 font-bold">{{ __('Extra Product') }}</h2>
 
         <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             <a href="#" class="group">
@@ -244,7 +261,7 @@
                 </p>
             </a>
 
-            
+
             <a href="#" class="group">
                 <div
                     class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
