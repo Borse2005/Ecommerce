@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderPlacedEvent;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -59,6 +60,7 @@ class OrderController extends Controller
             $value->delete();
         }
 
+        event(new OrderPlacedEvent(Auth::user()));
         session()->flash('order', "Order Palced...");
         return redirect()->route('dash.index');
     }
