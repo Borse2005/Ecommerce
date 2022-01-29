@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Events\AdminOrderEvent;
 use App\Events\OrderPlacedEvent;
+use App\Events\OrderUpdateEvent;
 use App\Listeners\AdminOrderListener;
 use App\Listeners\OrderPlacedListener;
+use App\Listeners\OrderUpdateListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -28,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         AdminOrderEvent::class => [
             AdminOrderListener::class
         ],
+        OrderUpdateEvent::class => [
+            OrderUpdateListener::class
+        ]
     ];
 
     /**

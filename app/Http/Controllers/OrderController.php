@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\AdminOrderEvent;
 use App\Events\OrderPlacedEvent;
+use App\Events\OrderUpdateEvent;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -106,6 +107,10 @@ class OrderController extends Controller
         $validation = $request->validated();
         $order->fill($validation);
         $order->save();
+
+        $user = User::findOrFail($order->user_id);
+
+        event(new OrderUpdateEvent($user, $order));
 
         session()->flash('order', 'Order updated');
         return redirect()->back();
