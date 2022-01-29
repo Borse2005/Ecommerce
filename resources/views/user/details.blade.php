@@ -53,64 +53,25 @@
                             @endif
                         </dd>
                     </div>
+                    @foreach ($user->address as $value)
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Address
+                            Address No {{ $key++ }}
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            @if ($user->address == null)
-                                {{ __("Empty") }}
-                            @else
-                                A/P. {{ $user->address }}
-                            @endif
+                            A/P . {{ $value->address }}, {{ $value->city }}, {{ $value->district }}, {{ $value->state }}  
+                            <br> 
+                            Mo. {{ $value->phone }},  {{ $value->alternate_phone }}
                         </dd>
                     </div>
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            District
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            @if ($user->district == null)
-                                {{ __("Empty") }}
-                            @else
-                                {{ $user->district }}
-                            @endif
-                        </dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            State
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            @if ($user->state == null)
-                                {{ __("Empty") }}
-                            @else
-                                {{ $user->state }}
-                            @endif
-                        </dd>
-                    </div>
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Pincode
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            @if ($user->pincode == null)
-                            {{ __("Empty") }}
-                        @else
-                            {{ $user->pincode }}
-                        @endif
-                        </dd>
-                    </div>
+                    @endforeach
+                   
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Total Order
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            @if ($user->order == null)
-                                {{ __("No Order") }}
-                            @else
-                                Dist. {{ $user->order }}
-                            @endif
+                            {{ count($user->order) }}
                         </dd>
                     </div>
                 </dl>
