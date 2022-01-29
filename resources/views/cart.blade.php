@@ -123,7 +123,7 @@
                                 </div>
                                 <hr>
                                 <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium font-bold text-black">
+                                    <dt class="text-sm  font-bold text-black">
                                         {{ __('Total amount') }}
                                     </dt>
                                     <dd class="mt-1 text-sm  sm:mt-0 sm:col-span-2 text-center font-bold text-black">

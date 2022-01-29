@@ -9,7 +9,7 @@
                         <div class="grid grid-cols-5 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="image" class="block text-sm font-medium text-gray-700">Select Image</label>
-                                <input type="file" name="image[]" id="image" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  sm:text-sm border-gray-300  @error('image') border-red-500 @enderror" multiple>
+                                <input type="file" name="image[]" id="image" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  sm:text-sm border-gray-300  " multiple>
                             </div>
                         </div>
                         @error('image')
