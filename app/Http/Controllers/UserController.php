@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:admin'])->only('index');
+    }
     /**
      * Display a listing of the resource.
      *

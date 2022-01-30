@@ -37,12 +37,14 @@ Route::resource('/details', ProductDetailController::class);
 Route::resource('/cart', CartController::class);
 
 Route::middleware(['auth', 'role:normal'])->group(function(){
-    Route::resource('/user', UserController::class);
     Route::resource('/address', AddressController::class)->except('destroy');
     Route::delete('/address/delete', [AddressController::class, 'destroy'])->name('address.destroy');
-    Route::resource('/order', OrderController::class);
     Route::resource('history', OrderHistory::class);
 });
+
+Route::resource('/order', OrderController::class);
+Route::resource('/user', UserController::class);
+
 
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->group(function(){
     
