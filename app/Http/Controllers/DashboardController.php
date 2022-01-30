@@ -22,7 +22,7 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request);
+        $revenu = 0;
         $category = Cache::remember('category', now()->minute(10), function () {
             return Category::all();
         });
@@ -30,7 +30,6 @@ class DashboardController extends Controller
             $product = Cache::remember('product', now()->minutes(10), function () use($request) {
                 return DB::table('products')->where('category_id', '=', $request->category)->take(4)->get();
             });
-            // dd($product);
         }else{
             $product = Cache::remember('product', now()->minutes(10), function () {
                 return Product::take(4)->get();
@@ -45,10 +44,13 @@ class DashboardController extends Controller
         $color = Cache::remember('color', now()->minutes(10), function () {
             return Color::all();
         });
-        $order = Cache::remember('order', now()->minute(10), function () {
-            return Order::all();
-        });
-        return view('dashboard', compact('category', 'product', 'user', 'session', 'color', 'order'));
+           
+        $order =  Order::get();
+        foreach($order as $argv){
+            $revenu += $argv->product->price - $argv->product->discount;
+        }
+
+        return view('dashboard', compact('category', 'product', 'user', 'session', 'color', 'order', 'revenu'));
     }
 
     /**
