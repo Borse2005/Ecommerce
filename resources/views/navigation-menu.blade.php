@@ -112,9 +112,7 @@
                         <span class="mx-2 mt-1">
                             <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
                         </span>
-                        <span class="mt-1">
-                            <i class="fa fa-heart"></i>
-                        </span>
+                        
                         @if (Route::has('login'))
                             <a class=" px-2" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif
