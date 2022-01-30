@@ -13,31 +13,37 @@ class Subcategory extends Model
 
     protected $fillable = [
         'subcategory',
-        'category_id'
+        'category_id',
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsToMany(Category::class);
     }
 
-    public function image(){
+    public function image()
+    {
         return $this->hasMany(Image::class);
     }
-    
-    public function product(){
-        return $this->hasOne(Product::class);
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 
-    public static function boot(){
+    public static function boot()
+    {
         parent::boot();
 
         static::addGlobalScope(new ScopesSubcategory);
-        
-        static::deleting(function(Subcategory $subcategory){
 
-            foreach ($subcategory->product as $key => $value) {
-                foreach ($value->order as  $values) {
-                    $value->delete();
+        static::deleting(function (Subcategory $subcategory) {
+
+            if ($subcategory->product != null) {
+                foreach ($subcategory->product as $subcategories) {
+                    foreach ($subcategories->order as $values) {
+                        $values->delete();
+                    }
                 }
             }
 
@@ -46,11 +52,13 @@ class Subcategory extends Model
                     Storage::disk('public')->delete($value->image);
                 }
             }
-            
+
             if ($subcategory->product != null) {
-                Storage::disk('public')->delete($subcategory->product->thumbnail);
+                foreach ($subcategory->product as $key => $value) {
+                    Storage::disk('public')->delete($value->thumbnail);
+                }
             }
-            
+
             $subcategory->image()->delete();
             $subcategory->product()->delete();
         });

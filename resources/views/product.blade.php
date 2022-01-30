@@ -443,7 +443,7 @@
                                                             class="w-56 h-64 object-center object-cover group-hover:opacity-75">
                                                     </div>
                                                     <h3 class="mt-4 text-sm text-gray-700">
-                                                        {{ $categories->product }}
+                                                        {{ Str::substr($categories->product, 0, 40) }}
                                                     </h3>
                                                     <p class="mt-1 text-lg font-medium text-gray-900">
                                                         ₹{{ number_format($categories->price) }}

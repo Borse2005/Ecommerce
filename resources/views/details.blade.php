@@ -91,65 +91,11 @@
         </div>
 
     </div>
-    <hr class="p-6 bg-white">
-    {{-- Comment --}}
-    <div class="bg-white">
-        <div class="lg:col-span-2 lg:border lg:border-gray-200 lg:pr-8 w-3/4 mx-auto ">
-            <div class="m-10">
-                <section aria-labelledby="reviews-heading" class=" border-gray-200 pt-10 lg:pt-6 pb-6">
-                    <h2 id="reviews-heading" class="text-center m-2 font-bold">{{ __('Comment') }}</h2>
-                    <div class="space-y-10">
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
-                                <h3 class="text-sm font-medium text-gray-900">This is the best white t-shirt out there
-                                </h3>
-                                <p class="sr-only">5 out of 5 stars</p>
-                                <div class="mt-3 space-y-6 text-sm text-gray-600">
-                                    <p>I've searched my entire life for a t-shirt that reflects every color in the
-                                        visible
-                                        spectrum. Scientists said it couldn't be done, but when I look at this shirt, I
-                                        see
-                                        white light bouncing right back into my eyes. Incredible!</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
-                                <h3 class="text-sm font-medium text-gray-900">Adds the perfect variety to my wardrobe
-                                </h3>
-                                <p class="sr-only">4 out of 5 stars</p>
-                                <div class="mt-3 space-y-6 text-sm text-gray-600">
-                                    <p>I used to be one of those unbearable minimalists who only wore the same black
-                                        v-necks
-                                        every day. Now, I have expanded my wardrobe with three new crewneck options!
-                                        Leaving off
-                                        one star only because I wish the heather gray was more gray.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="flex flex-col sm:flex-row">
-                            <div class="mt-6 order-2 sm:mt-0 sm:ml-16">
-                                <h3 class="text-sm font-medium text-gray-900">All good things come in 6-Packs</h3>
-                                <p class="sr-only">5 out of 5 stars</p>
-                                <div class="mt-3 space-y-6 text-sm text-gray-600">
-                                    <p>Tasty beverages, strong abs that will never be seen due to aforementioned tasty
-                                        beverages, and these Basic Tees!</p>
-                                </div>
-                            </div>
-                        </div>
-                </section>
-            </div>
-        </div>
-    </div>
-    </div>
-    <hr class="my-6">
+    <hr class="p-3 bg-white">
     {{-- Product List --}}
     <div class="bg-white">
         <div class="max-w-2xl mx-auto py-6 px-4 sm:py-6 sm:px-6 lg:max-w-7xl lg:px-2">
-            <h2 class="py-6 font-bold">Related Products </h2>
+            <h2 class="py-2 font-bold">Related Products </h2>
 
             <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 <a href="#" class="group">
