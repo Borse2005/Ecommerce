@@ -12,17 +12,11 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id',
-        'subcategory_id',
-        'product',
-        'thumbnail',
-        'description',
-        'price',
-        'discount',
-        'stock',
-        'color',
-        'Specifications',
-        'highlight',
+        'category_id', 'subcategory_id', 'product', 'thumbnail', 'description', 'price', 'discount','stock', 'color_id','specifications', 'highlight',
+    ];
+
+    protected $hidden = [
+        'created_at', 'updated_at',
     ];
 
     public function category()

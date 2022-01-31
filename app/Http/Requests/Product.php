@@ -34,6 +34,7 @@ class Product extends FormRequest
             'color_id' => 'required',
             'highlight' => 'required|min:5',
             'specifications' => 'required|min:5',
+            'thumbnail' => 'required',
         ];
     }
 
