@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductDetailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

@@ -33,13 +33,15 @@ Route::get('back', function () {
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 Route::resource('/dash', DashboardController::class);
 Route::post('/dashboard/{id}', [DashboardController::class, 'show'])->name('show.dash');
-Route::resource('/details', ProductDetailController::class);
-Route::resource('/cart', CartController::class);
+Route::resource('/details', ProductDetailController::class)->only('show');
+Route::resource('/cart', CartController::class)->only(['index', 'show', 'update', 'destroy']);
 
 Route::middleware(['auth', 'role:normal'])->group(function(){
+
     Route::resource('/address', AddressController::class)->except('destroy');
     Route::delete('/address/delete', [AddressController::class, 'destroy'])->name('address.destroy');
     Route::resource('history', OrderHistory::class);
+
 });
 
 Route::resource('/order', OrderController::class);
