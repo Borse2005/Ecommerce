@@ -16,6 +16,10 @@ class Category extends Model
         'category',
     ];
 
+    protected $hidden = [
+        'created_at' , 'updated_at',
+    ];
+
     public function subcategory()
     {
         return $this->hasMany(Subcategory::class);
