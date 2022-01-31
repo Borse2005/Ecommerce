@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product as RequestsProduct;
+use App\Http\Resources\CreateProductResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -35,7 +36,9 @@ class ProductController extends Controller
     public function store(RequestsProduct $request)
     {
         $validation = $request->validated();
-        Product::create($validation);
+        $product = Product::create($validation);
+        $products = Product::with('category', 'subcategory', 'color')->find($product->id);
+        return new ProductResource($products);
     }
 
     /**
