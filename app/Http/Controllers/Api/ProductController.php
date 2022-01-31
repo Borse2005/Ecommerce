@@ -14,7 +14,7 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->only('store');
+        $this->middleware('auth:api');
     }
     /**
      * Display a listing of the resource.
@@ -49,7 +49,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return new ProductResource($product);
     }
 
     /**
@@ -59,9 +59,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(RequestsProduct $request, Product $product)
     {
-        //
+        $validation = $request->validated();
+        $product->fill($validation);
+        $product->save();
+
+        return new ProductResource($product);
     }
 
     /**
@@ -72,6 +76,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->noContent();
     }
 }
