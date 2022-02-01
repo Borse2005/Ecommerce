@@ -24,7 +24,7 @@ class UpdateOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'status_id' => 'required|integer',
+            'status_id' => 'required|integer|digits_between:0,3|',
         ];
     }
 }

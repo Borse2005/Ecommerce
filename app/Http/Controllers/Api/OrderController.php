@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Events\AdminOrderEvent;
 use App\Events\OrderPlacedEvent;
+use App\Events\OrderUpdateEvent;
 use App\Events\OutOfStockEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\Order\OrderResource;
 use App\Models\Cart;
 use App\Models\DeliveryStatus;
@@ -106,9 +108,23 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        $validation = $request->validated();
+        if ($request->status_id != $order->status_id) {
+            $order->fill($validation);
+            $order->save();
+
+            $user = User::findOrFail($order->user_id);
+
+            event(new OrderUpdateEvent($user, $order));
+
+            session()->flash('order', 'Order updated');
+        } else {
+            session()->flash('order', 'Please Change your select input...');
+        }
+        
+        return new OrderResource($order);
     }
 
     /**
@@ -117,8 +133,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return response()->noContent();
     }
 }
