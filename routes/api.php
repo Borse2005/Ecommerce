@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\ProductController;
@@ -28,3 +29,4 @@ Route::apiResource('/category', CategoryController::class);
 Route::apiResource('/subcategory', SubcategoryController::class);
 Route::apiResource('/color', ColorController::class);
 Route::apiResource('/user', UserController::class);
+Route::apiResource('/cart', CartController::class)->only(['index', 'show']);
