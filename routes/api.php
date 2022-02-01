@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubcategoryController;
 use Illuminate\Http\Request;
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/product', ProductController::class);
 Route::apiResource('/category', CategoryController::class);
 Route::apiResource('/subcategory', SubcategoryController::class);
+Route::apiResource('/color', ColorController::class);
