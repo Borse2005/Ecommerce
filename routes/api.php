@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SubcategoryController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,4 @@ Route::apiResource('/product', ProductController::class);
 Route::apiResource('/category', CategoryController::class);
 Route::apiResource('/subcategory', SubcategoryController::class);
 Route::apiResource('/color', ColorController::class);
+Route::apiResource('/user', UserController::class);
