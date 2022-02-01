@@ -13,6 +13,11 @@ class Order extends Model
         'address_id', 'product_id', 'payment_status', 'delivery_status', 'user_id','qty', 'status_id'
     ];
 
+    protected $hidden = [
+        'delivery_status'
+    ];
+
+
     public function product(){
         return $this->belongsTo(Product::class);
     }
@@ -23,5 +28,9 @@ class Order extends Model
 
     public function status(){
         return $this->belongsTo(DeliveryStatus::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

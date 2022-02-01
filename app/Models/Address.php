@@ -12,4 +12,8 @@ class Address extends Model
     protected $fillable = [
         'address', 'city', 'district', 'state','phone', 'alternate_phone', 'user_id', 'name','pincode'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

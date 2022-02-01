@@ -40,7 +40,7 @@ Route::middleware(['auth', 'role:normal'])->group(function(){
 
     Route::resource('/address', AddressController::class)->except('destroy');
     Route::delete('/address/delete', [AddressController::class, 'destroy'])->name('address.destroy');
-    Route::resource('history', OrderHistory::class);
+    Route::resource('history', OrderHistory::class)->only(['index']);
 
 });
 

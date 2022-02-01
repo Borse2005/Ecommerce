@@ -26,7 +26,6 @@ class StoreOrderRequest extends FormRequest
         return [
             'address_id' => 'required',
             'payment_status' => 'required',
-            'product_id' => 'required',
             'cart_id' => 'required',
         ];
     }
