@@ -25,7 +25,7 @@ class Subcategory extends FormRequest
     {
         return [
             'subcategory' => 'required|min:2|max:40|',
-            // 'category_id' => 'required'
+            'category_id' => 'required'
         ];
     }
 }

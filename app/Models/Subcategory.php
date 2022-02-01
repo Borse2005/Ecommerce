@@ -16,9 +16,13 @@ class Subcategory extends Model
         'category_id',
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at', 'category_id',
+    ];
+
     public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function image()
