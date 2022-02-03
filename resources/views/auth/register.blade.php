@@ -21,19 +21,6 @@
                      placeholder="john@gmial.com" />
             </div>
             <div class="mt-4">
-                <x-jet-label for="phone" value="{{ __('Phone number') }}" />
-                <div class="mt-1 relative rounded-md shadow-sm">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <span class="text-gray-500 sm:text-sm">
-                            +91
-                        </span>
-                    </div>
-                    <x-jet-input type="text" name="phone" id="phone"
-                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                        data-type="adhaar-number" maxlength="11" :value="old('phone')" placeholder="12345 67890" style="padding-left: 40px" />
-                </div>
-            </div>
-            <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" 
                     autocomplete="new-password" placeholder="Password" />
